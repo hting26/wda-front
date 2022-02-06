@@ -20,6 +20,14 @@ const routes = [
     meta: {
       title: '關於我們'
     }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
+    meta: {
+      title: '註冊登入'
+    }
   }
 ]
 
