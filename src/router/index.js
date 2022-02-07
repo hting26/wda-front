@@ -54,11 +54,11 @@ const routes = [
     }
   },
   {
-    path: '/happytail',
-    name: 'Happytail',
-    component: () => import(/* webpackChunkName: "happytail" */ '../views/Happytail.vue'),
+    path: '/register',
+    name: 'Register',
+    component: () => import(/* webpackChunkName: "register" */ '../views/Register.vue'),
     meta: {
-      title: 'Mary’s Doggies'
+      title: '註冊'
     }
   },
   {
@@ -66,7 +66,7 @@ const routes = [
     name: 'Login',
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
     meta: {
-      title: '註冊登入'
+      title: '登入'
     }
   }
 ]

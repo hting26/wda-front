@@ -9,11 +9,11 @@
       b-navbar-nav
         b-nav-item.navR.ml-4(v-for='(value, index) in hoverdata' :to='value.to' @mouseover="value.hover = true" @mouseleave="value.hover = false")
           div(v-if="value.hover === false") {{ value.eng }}
-          .navCh(v-else) {{ value.ch }}
+          div(v-else) {{ value.ch }}
       b-navbar-nav.ml-auto
         b-nav-item(href='#')
           b-icon(icon='cart-fill')
-        b-nav-item(to='/login')
+        b-nav-item(to='/register')
           b-icon(icon='person-fill')
   router-view
   #footer
@@ -40,6 +40,13 @@ export default {
 </script>
 <style lang="scss">
 @import "~@/assets/scss/vendors/bootstrap-vue/index";
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.1);
+}
 #logo{
   width: 50px;
 }
