@@ -7,38 +7,34 @@
       b-icon(icon='caret-down-fill')
     b-collapse#nav-collapse(is-nav)
       b-navbar-nav
-        b-nav-item.navR.ml-4(href='#' @mouseover="hover = true" @mouseleave="hover = false")
-          div(v-if="hover === false" ) About
-          .navCh(:style="{display: navHover}") 關於我們
-        b-nav-item.navR(href='#' @mouseover="hover = true" @mouseleave="hover = false")
-          div(v-if="hover === false" ) Happy Tail
-          .navCh(:style="{display: navHover}") 快樂時光
-        b-nav-item.navR(href='#') Donate
-        b-nav-item.navR(href='#') Volunteer
-        b-nav-item.navR(href='#') Adoption
+        b-nav-item.navR.ml-4(v-for='(value, index) in hoverdata' :to='value.to' @mouseover="value.hover = true" @mouseleave="value.hover = false")
+          div(v-if="value.hover === false") {{ value.eng }}
+          .navCh(v-else) {{ value.ch }}
       b-navbar-nav.ml-auto
         b-nav-item(href='#')
           b-icon(icon='cart-fill')
         b-nav-item(to='/login')
           b-icon(icon='person-fill')
-  #footer
   router-view
+  #footer
+    div
+      |社團法人台灣瑪莉愛狗協會
+      |台內團字號第1101363666號
 </template>
 <script>
 export default {
   data () {
     return {
-      hover: false
+      hoverdata: [
+        { eng: 'About', ch: '關於我們', hover: false, to: '/about' },
+        { eng: 'Happy Tail', ch: '快樂時光', hover: false, to: '/happytail' },
+        { eng: 'Donate', ch: '愛心捐贈', hover: false, to: '/donate' },
+        { eng: 'Volunteer', ch: '招募志工', hover: false, to: '/volunteer' },
+        { eng: 'Adoption', ch: '我要領養', hover: false, to: '/adoption' }
+      ]
     }
   },
   computed: {
-    navHover () {
-      if (this.hover === true) {
-        return 'block'
-      } else {
-        return 'none'
-      }
-    }
   }
 }
 </script>
@@ -60,13 +56,17 @@ export default {
   display: flex;
   justify-content: center;
 }
-// #footer {
-//   width: 100%;
-//   height: 100px;
-//   background-color: aqua;
-//   bottom: 0;
-//   position: fixed;
-// }
+#footer {
+  width: 100%;
+  height: 90px;
+  background-color: $primary;
+  bottom: 0;
+  position: relative;
+  color: $daccent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 // #app {
 //   font-family: Avenir, Helvetica, Arial, sans-serif;

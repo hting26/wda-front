@@ -1,0 +1,4 @@
+<template lang="pug">
+#donate
+    h1 This is an donate page
+</template>
