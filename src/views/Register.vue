@@ -1,18 +1,32 @@
 <template lang="pug">
-b-container#register
-  b-row
-    b-col(cols='12')
-      h1.text-center 註冊
-    b-col(cols='12')
-      b-form(@submit.prevent="register")
-        b-form-group(label='帳號' label-for='input-account' description='帳號長度為 4 到 20 個字' :state="state.account" invalid-feedback="帳號格式不正確")
-          b-form-input#input-account(v-model="form.account" required placeholder='請輸入帳號' type='text' :state="state.account")
-        b-form-group(label='密碼' label-for='input-password' description='密碼長度為 4 到 20 個字' :state="state.password" invalid-feedback="密碼格式不正確")
-          b-form-input#input-password(v-model="form.password" required placeholder='請輸入密碼' type='password' :state="state.password")
-        b-form-group(label='信箱' label-for='input-email' description='請輸入有效的信箱' :state="state.email" invalid-feedback="信箱格式不正確")
-          b-form-input#input-email(v-model="form.email" required placeholder='請輸入信箱' type='text' :state="state.email")
-        .text-center
-          b-btn.mx-1(type='submit') 註冊
+#register
+  b-container
+    b-row
+      #login
+        b-col(cols='12')
+          h3.text-center.mb-4.text-info 登入
+        b-col(cols='12')
+          b-form(@submit.prevent="login")
+            b-form-group(label='帳號' label-for='login-account' description='帳號長度為 4 到 20 個字' :state="state.logaccount" invalid-feedback="帳號格式不正確")
+              b-form-input#login-account(v-model="loginForm.account" required placeholder='請輸入帳號' type='text' :state="state.logaccount")
+            b-form-group(label='密碼' label-for='login-password' description='密碼長度為 4 到 20 個字' :state="state.logpassword" invalid-feedback="密碼格式不正確")
+              b-form-input#login-password(v-model="loginForm.password" required placeholder='請輸入密碼' type='password' :state="state.logpassword")
+            .text-center
+              b-btn.mx-1(type='submit') 登入
+      #reg
+        b-col(cols='12')
+          h3.text-center.mb-4.text-info 註冊
+        b-col(cols='12')
+          b-form(@submit.prevent="register")
+            b-form-group(label='帳號' label-for='input-account' description='帳號長度為 4 到 20 個字' :state="state.account" invalid-feedback="帳號格式不正確")
+              b-form-input#input-account(v-model="form.account" required placeholder='請輸入帳號' type='text' :state="state.account")
+            b-form-group(label='密碼' label-for='input-password' description='密碼長度為 4 到 20 個字' :state="state.password" invalid-feedback="密碼格式不正確")
+              b-form-input#input-password(v-model="form.password" required placeholder='請輸入密碼' type='password' :state="state.password")
+            b-form-group(label='信箱' label-for='input-email' description='請輸入有效的信箱' :state="state.email" invalid-feedback="信箱格式不正確")
+              b-form-input#input-email(v-model="form.email" required placeholder='請輸入信箱' type='text' :state="state.email")
+            .text-center
+              b-btn.mx-1(type='submit') 註冊
+  b-img.loginImg(src="../assets/loginImg.png")
 </template>
 
 <script>
@@ -21,6 +35,10 @@ import validator from 'validator'
 export default {
   data () {
     return {
+      loginForm: {
+        logaccount: '',
+        logpassword: ''
+      },
       form: {
         account: '',
         password: '',
@@ -31,6 +49,8 @@ export default {
   computed: {
     state () {
       return {
+        logaccount: this.form.account.length === 0 ? null : this.form.account.length >= 4 && this.form.account.length <= 20,
+        logpassword: this.form.password.length === 0 ? null : this.form.password.length >= 4 && this.form.password.length <= 20,
         account: this.form.account.length === 0 ? null : this.form.account.length >= 4 && this.form.account.length <= 20,
         password: this.form.password.length === 0 ? null : this.form.password.length >= 4 && this.form.password.length <= 20,
         email: this.form.email.length === 0 ? null : validator.isEmail(this.form.email)
@@ -54,7 +74,36 @@ export default {
           text: error.response.data.message
         })
       }
+    },
+    login () {
+      this.$store.dispatch('user/login', this.form)
     }
   }
 }
 </script>
+
+<style lang="scss">
+#register {
+}
+#reg{
+  width: 100%;
+  margin-top: 3rem;
+  // background-color: antiquewhite;
+}
+.loginImg{
+  width: 100%;
+}
+#login{
+  width: 100%;
+}
+@media (min-width:768px) {
+  #reg{
+  width: 50%;
+  margin-top: 0;
+  // background-color: antiquewhite;
+  }
+  #login{
+  width: 50%;
+  }
+}
+</style>

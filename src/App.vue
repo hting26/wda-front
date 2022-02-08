@@ -4,10 +4,13 @@
     b-navbar-brand(to='/')
       img#logo(src="./assets/logo.png")
     b-navbar-toggle.toggle(target='nav-collapse')
-      b-icon(icon='caret-down-fill')
+      <template #default="{ expanded }">
+        <b-icon v-if="expanded" icon="chevron-bar-up"></b-icon>
+        <b-icon v-else icon="chevron-bar-down"></b-icon>
+      </template>
     b-collapse#nav-collapse(is-nav)
       b-navbar-nav
-        b-nav-item.navR.ml-4(v-for='(value, index) in hoverdata' :to='value.to' @mouseover="value.hover = true" @mouseleave="value.hover = false")
+        b-nav-item.navR.ml-4(v-for='(value, index) in hoverData' :to='value.to' @mouseover="value.hover = true" @mouseleave="value.hover = false")
           div(v-if="value.hover === false") {{ value.eng }}
           div(v-else) {{ value.ch }}
       b-navbar-nav.ml-auto
@@ -15,17 +18,21 @@
           b-icon(icon='cart-fill')
         b-nav-item(to='/register')
           b-icon(icon='person-fill')
+  div.fakenav
   router-view
   #footer
     div
       |社團法人台灣瑪莉愛狗協會
       |台內團字號第1101363666號
+    div
+      |泰山職訓局學員作品
+      |僅供學習用途
 </template>
 <script>
 export default {
   data () {
     return {
-      hoverdata: [
+      hoverData: [
         { eng: 'About', ch: '關於我們', hover: false, to: '/about' },
         { eng: 'Happy Tail', ch: '快樂時光', hover: false, to: '/happytail' },
         { eng: 'Donate', ch: '愛心捐贈', hover: false, to: '/donate' },
@@ -47,8 +54,8 @@ export default {
   z-index: 999;
   box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.1);
 }
-#logo{
-  width: 50px;
+#logo {
+  width: 30px;
 }
 .toggle {
   border: none;
@@ -57,15 +64,17 @@ export default {
     }
 }
 .navR {
-  width: 110px;
+  width: 100px;
   // margin-right: 1px;
   // background-color: aqua;
   display: flex;
   justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 #footer {
   width: 100%;
-  height: 90px;
+  min-height: 100px;
   background-color: $primary;
   bottom: 0;
   position: relative;
@@ -73,8 +82,21 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
-
+.fakenav{
+  height: 59.59px;
+  width: 100%;
+}
+@media (min-width:768px) {
+  #logo {
+  width: 55px;
+  }
+  .fakenav{
+  height: 83.17px;
+  width: 100%;
+}
+}
 // #app {
 //   font-family: Avenir, Helvetica, Arial, sans-serif;
 //   -webkit-font-smoothing: antialiased;
