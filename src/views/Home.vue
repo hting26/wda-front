@@ -1,6 +1,6 @@
 <template lang="pug">
 #home
-  b-carousel#carousel-fade(fade, controls,:interval="2000", img-width='1024', img-height='480')
+  b-carousel#carousel-fade(fade controls :interval="2000")
     b-carousel-slide(img-src='../assets/carousel1.jpg' style="width: 1024; height: 480; object-fit: cover;" )
     b-carousel-slide(img-src='../assets/carousel2.jpg' style="width: 1024; height: 480; object-fit: cover;")
     b-carousel-slide(img-src='../assets/carousel3.jpg' style="object-fit: cover;")
@@ -17,6 +17,8 @@
     b-img.rescueImg(src="../assets/rescue.jpg" fluid)
 </template>
 <style lang="scss">
+@import "~@/assets/scss/vendors/bootstrap-vue/index";
+
 #home {
   text-align: center;
 }
