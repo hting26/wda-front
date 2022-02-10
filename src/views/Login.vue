@@ -1,4 +1,4 @@
-<!-- <template lang="pug">
+<template lang="pug">
 b-container#register
   b-row
     b-col(cols='12')
@@ -37,4 +37,4 @@ export default {
     }
   }
 }
-</script> -->
+</script>

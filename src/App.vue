@@ -10,17 +10,17 @@
       </template>
     b-collapse#nav-collapse(is-nav)
       b-navbar-nav
-        b-nav-item.navR.ml-4(v-for='(value, index) in hoverData' :to='value.to' @mouseover="value.hover = true" @mouseleave="value.hover = false")
+        b-nav-item.navR.mx-auto(v-for='(value, index) in hoverData' :to='value.to' @mouseover="value.hover = true" @mouseleave="value.hover = false")
           div(v-if="value.hover === false") {{ value.eng }}
           div(v-else) {{ value.ch }}
       b-navbar-nav.ml-auto
-        b-nav-item(href='#')
-          b-icon(icon='heart')
-        b-nav-item(to='/register')
-          b-icon(icon='person-fill' v-if="!user.isLogin")
-        b-nav-item(v-if="user.isLogin")
-          b-icon(icon='person-circle')
-          |登出
+        b-nav-item(to='/cart')|物資籃
+          b-icon.ml-1(icon='heart')
+        b-nav-item(to='/register' v-if="!user.isLogin")|註冊
+          //- b-icon(icon='person-fill' )
+        b-nav-item(to='/login' v-if="!user.isLogin")|登入
+          //- b-icon(icon='person-fill')
+        b-nav-item(v-if="user.isLogin")|登出
   div.fakenav
   router-view
   #footer
@@ -62,6 +62,7 @@ export default {
   width: 100%;
   z-index: 999;
   box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.1);
+  text-align: center;
 }
 #logo {
   width: 30px;
