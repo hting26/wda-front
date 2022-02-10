@@ -20,7 +20,7 @@
           //- b-icon(icon='person-fill' )
         b-nav-item(to='/login' v-if="!user.isLogin")|登入
           //- b-icon(icon='person-fill')
-        b-nav-item(v-if="user.isLogin")|登出
+        b-nav-item(v-if="user.isLogin" @click="logout")|登出
   div.fakenav
   router-view
   #footer

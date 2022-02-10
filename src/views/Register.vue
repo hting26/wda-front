@@ -2,7 +2,7 @@
 #register
   b-container
     b-row
-      #reg
+      #regForm
         b-col(cols='12' md='6')
           h3.text-center.mb-4.text-info 註冊
           b-form(@submit.prevent="register")
@@ -13,7 +13,7 @@
             b-form-group(label='信箱' label-for='input-email' description='請輸入有效的信箱' :state="state.email" invalid-feedback="信箱格式不正確")
               b-form-input#input-email(v-model="form.email" required placeholder='請輸入信箱' type='text' :state="state.email")
             .text-center
-              b-btn.mx-1(type='submit') 註冊
+              b-btn.regbtn.mx-1(type='submit') 註冊
   b-img.loginImg(src="../assets/login.png")
 </template>
 
@@ -23,10 +23,6 @@ import validator from 'validator'
 export default {
   data () {
     return {
-      loginForm: {
-        logaccount: '',
-        logpassword: ''
-      },
       form: {
         account: '',
         password: '',
@@ -37,8 +33,6 @@ export default {
   computed: {
     state () {
       return {
-        logaccount: this.form.account.length === 0 ? null : this.form.account.length >= 4 && this.form.account.length <= 20,
-        logpassword: this.form.password.length === 0 ? null : this.form.password.length >= 4 && this.form.password.length <= 20,
         account: this.form.account.length === 0 ? null : this.form.account.length >= 4 && this.form.account.length <= 20,
         password: this.form.password.length === 0 ? null : this.form.password.length >= 4 && this.form.password.length <= 20,
         email: this.form.email.length === 0 ? null : validator.isEmail(this.form.email)
@@ -62,24 +56,24 @@ export default {
           text: error.response.data.message
         })
       }
-    },
-    login () {
-      this.$store.dispatch('user/login', this.form)
     }
   }
 }
 </script>
 
 <style lang="scss">
-#reg {
+#regForm {
   width: 100%;
   margin-top: 3rem;
+}
+.regbtn{
+  color: #fff;
 }
 .loginImg {
   width: 100%;
 }
 @media (min-width:768px) {
-  #reg {
+  #regForm {
   margin-top: 0;
   display: flex;
   justify-content: center;

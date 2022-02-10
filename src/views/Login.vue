@@ -1,15 +1,18 @@
 <template lang="pug">
-b-container#login
-  b-row
-    b-col(cols='12' md='6')
-      h1.text-center 登入
-      b-form(@submit.prevent="login")
-        b-form-group(label='帳號' label-for='input-account' description='帳號長度為 4 到 20 個字' :state="state.account" invalid-feedback="帳號格式不正確")
-          b-form-input#input-account(v-model="form.account" required placeholder='請輸入帳號' type='text' :state="state.account")
-        b-form-group(label='密碼' label-for='input-password' description='密碼長度為 4 到 20 個字' :state="state.password" invalid-feedback="密碼格式不正確")
-          b-form-input#input-password(v-model="form.password" required placeholder='請輸入密碼' type='password' :state="state.password")
-        .text-center
-          b-btn.mx-1(variant='success' type='submit') 登入
+#login
+  b-container
+    b-row
+      #loginForm
+        b-col(cols='12' md='6')
+          h3.text-center.mb-4.text-info 登入
+          b-form(@submit.prevent="login")
+            b-form-group(label='帳號' label-for='input-account' description='帳號長度為 4 到 20 個字' :state="state.account" invalid-feedback="帳號格式不正確")
+              b-form-input#input-account(v-model="form.account" required placeholder='請輸入帳號' type='text' :state="state.account")
+            b-form-group(label='密碼' label-for='input-password' description='密碼長度為 4 到 20 個字' :state="state.password" invalid-feedback="密碼格式不正確")
+              b-form-input#input-password(v-model="form.password" required placeholder='請輸入密碼' type='password' :state="state.password")
+            .text-center
+              b-btn.loginbtn.mx-1(type='submit') 登入
+  b-img.loginImg(src="../assets/login.png")
 </template>
 
 <script>
@@ -39,25 +42,20 @@ export default {
 </script>
 
 <style lang="scss">
-// #reg{
-//   width: 100%;
-//   margin-top: 3rem;
-//   // background-color: antiquewhite;
-// }
-// .loginImg{
-//   width: 100%;
-// }
-// #login{
-//   width: 100%;
-// }
-// @media (min-width:768px) {
-//   #reg{
-//   width: 50%;
-//   margin-top: 0;
-//   // background-color: antiquewhite;
-//   }
-//   #login{
-//   width: 50%;
-//   }
-// }
+#loginForm{
+  width: 100%;
+}
+.loginbtn{
+  color: #fff;
+}
+.loginImg {
+  width: 100%;
+}
+@media (min-width:768px) {
+  #loginForm {
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  }
+}
 </style>
