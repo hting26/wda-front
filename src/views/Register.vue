@@ -2,21 +2,9 @@
 #register
   b-container
     b-row
-      #login
-        b-col(cols='12')
-          h3.text-center.mb-4.text-info 登入
-        b-col(cols='12')
-          b-form(@submit.prevent="login")
-            b-form-group(label='帳號' label-for='login-account' description='帳號長度為 4 到 20 個字' :state="state.logaccount" invalid-feedback="帳號格式不正確")
-              b-form-input#login-account(v-model="loginForm.account" required placeholder='請輸入帳號' type='text' :state="state.logaccount")
-            b-form-group(label='密碼' label-for='login-password' description='密碼長度為 4 到 20 個字' :state="state.logpassword" invalid-feedback="密碼格式不正確")
-              b-form-input#login-password(v-model="loginForm.password" required placeholder='請輸入密碼' type='password' :state="state.logpassword")
-            .text-center
-              b-btn.mx-1(type='submit') 登入
       #reg
-        b-col(cols='12')
+        b-col(cols='12' md='6')
           h3.text-center.mb-4.text-info 註冊
-        b-col(cols='12')
           b-form(@submit.prevent="register")
             b-form-group(label='帳號' label-for='input-account' description='帳號長度為 4 到 20 個字' :state="state.account" invalid-feedback="帳號格式不正確")
               b-form-input#input-account(v-model="form.account" required placeholder='請輸入帳號' type='text' :state="state.account")
@@ -83,28 +71,18 @@ export default {
 </script>
 
 <style lang="scss">
-#register {
-  background-color: $primary;
-}
-#reg{
+#reg {
   width: 100%;
   margin-top: 3rem;
-  // background-color: antiquewhite;
 }
-.loginImg{
-  width: 100%;
-}
-#login{
+.loginImg {
   width: 100%;
 }
 @media (min-width:768px) {
-  #reg{
-  width: 50%;
+  #reg {
   margin-top: 0;
-  // background-color: antiquewhite;
-  }
-  #login{
-  width: 50%;
+  display: flex;
+  justify-content: center;
   }
 }
 </style>

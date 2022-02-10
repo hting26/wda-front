@@ -1,9 +1,8 @@
 <template lang="pug">
-b-container#register
+b-container#login
   b-row
-    b-col(cols='12')
+    b-col(cols='12' md='6')
       h1.text-center 登入
-    b-col(cols='12')
       b-form(@submit.prevent="login")
         b-form-group(label='帳號' label-for='input-account' description='帳號長度為 4 到 20 個字' :state="state.account" invalid-feedback="帳號格式不正確")
           b-form-input#input-account(v-model="form.account" required placeholder='請輸入帳號' type='text' :state="state.account")
@@ -38,3 +37,27 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+// #reg{
+//   width: 100%;
+//   margin-top: 3rem;
+//   // background-color: antiquewhite;
+// }
+// .loginImg{
+//   width: 100%;
+// }
+// #login{
+//   width: 100%;
+// }
+// @media (min-width:768px) {
+//   #reg{
+//   width: 50%;
+//   margin-top: 0;
+//   // background-color: antiquewhite;
+//   }
+//   #login{
+//   width: 50%;
+//   }
+// }
+</style>
