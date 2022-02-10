@@ -15,9 +15,12 @@
           div(v-else) {{ value.ch }}
       b-navbar-nav.ml-auto
         b-nav-item(href='#')
-          b-icon(icon='cart-fill')
+          b-icon(icon='heart')
         b-nav-item(to='/register')
-          b-icon(icon='person-fill')
+          b-icon(icon='person-fill' v-if="!user.isLogin")
+        b-nav-item(v-if="user.isLogin")
+          b-icon(icon='person-circle')
+          |登出
   div.fakenav
   router-view
   #footer
@@ -41,7 +44,13 @@ export default {
       ]
     }
   },
-  computed: {
+  methods: {
+    logout () {
+      this.$store.dispatch('user/logout')
+    }
+  },
+  async created () {
+    this.$store.dispatch('user/getInfo')
   }
 }
 </script>
@@ -94,6 +103,15 @@ export default {
   }
   .fakenav{
   height: 83.17px;
+  width: 100%;
+}
+}
+@media (min-width:992px) {
+  #logo {
+  width: 95px;
+  }
+  .fakenav{
+  height: 124.77px;
   width: 100%;
 }
 }

@@ -1,12 +1,12 @@
 <template lang="pug">
 #home
-  b-carousel#carousel-fade(fade controls :interval="2000")
+  b-carousel#carousel-fade(fade controls :interval="5000")
     b-carousel-slide(img-src='../assets/carousel1.jpg' style="width: 1024; height: 480; object-fit: cover;" )
     b-carousel-slide(img-src='../assets/carousel2.jpg' style="width: 1024; height: 480; object-fit: cover;")
     b-carousel-slide(img-src='../assets/carousel3.jpg' style="object-fit: cover;")
     b-carousel-slide(img-src='../assets/carousel4.jpg')
   b-container#home
-    //- .titletext|Mary’s Doggies
+    .titletext|Mary’s Doggies
     b-row.content
       //- b-img.titleImg(src="../assets/marrysDog.png" fluid)
       b-col(cols='12' lg='6')
@@ -18,7 +18,7 @@
 </template>
 <style lang="scss">
 @import "~@/assets/scss/vendors/bootstrap-vue/index";
-
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
 #home {
   text-align: center;
 }
@@ -30,7 +30,12 @@
 }
 .titletext{
   font-family: 'Modak', cursive;
-  font-size: 72px;
+  font-size: calc(60px + 3vw);
+  color: $accent;
+  text-shadow: rgb(255, 255, 255) 3px 3px ;
+  position: relative;
+  top: 30px;
+  line-height: 5rem;
 }
 .content {
   padding: 4rem 2rem;
@@ -38,14 +43,14 @@
   border: .8rem solid $accent;
   background-color: $primary;
   text-align: left;
-  margin: 8rem .5rem;
+  margin: 0 .5rem;
 }
 .text {
   margin: 1rem 0 auto;
   color: $dark2;
 }
 .rescueImg {
-  margin: 1rem 0 auto;
+  margin: 5rem 0 auto;
 }
 .homeImg {
   // width: 100px;

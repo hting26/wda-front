@@ -26,7 +26,7 @@
               b-form-input#input-email(v-model="form.email" required placeholder='請輸入信箱' type='text' :state="state.email")
             .text-center
               b-btn.mx-1(type='submit') 註冊
-  b-img.loginImg(src="../assets/loginImg.png")
+  b-img.loginImg(src="../assets/login.png")
 </template>
 
 <script>
@@ -84,6 +84,7 @@ export default {
 
 <style lang="scss">
 #register {
+  background-color: $primary;
 }
 #reg{
   width: 100%;
