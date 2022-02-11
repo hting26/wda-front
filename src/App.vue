@@ -14,6 +14,7 @@
           div(v-if="value.hover === false") {{ value.eng }}
           div(v-else) {{ value.ch }}
       b-navbar-nav.ml-auto
+        b-nav-item(v-if="user.isLogin && user.isAdmin" to='/admin') 管理
         b-nav-item(to='/cart')|物資籃
           b-icon.ml-1(icon='heart')
         b-nav-item(to='/register' v-if="!user.isLogin")|註冊
@@ -24,9 +25,9 @@
   div.fakenav
   router-view
   #footer
-    div
-      |社團法人台灣瑪莉愛狗協會
-      |台內團字號第1101363666號
+    //- div
+    //-   |社團法人台灣瑪莉愛狗協會
+    //-   |台內團字號第1101363666號
     div
       |泰山職訓局學員作品
       |僅供學習用途
@@ -56,6 +57,10 @@ export default {
 </script>
 <style lang="scss">
 @import "~@/assets/scss/vendors/bootstrap-vue/index";
+::selection{
+  background-color: $accent;
+  color: white;
+}
 .navbar {
   position: fixed;
   top: 0;
@@ -114,7 +119,10 @@ export default {
   .fakenav{
   height: 124.77px;
   width: 100%;
-}
+  }
+  .navR {
+  width: 125px;
+  }
 }
 // #app {
 //   font-family: Avenir, Helvetica, Arial, sans-serif;

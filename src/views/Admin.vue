@@ -1,0 +1,31 @@
+<template lang="pug">
+#Admin
+  b-container
+    b-row
+      b-col(cols='12')
+      b-col(cols='12')
+        b-nav(justified align="center")
+          b-nav-item(to='/admin/products' exact exact-active-class='active') 募集商品管理
+          b-nav-item(to='/admin/orders' exact exact-active-class='active') 募集訂單管理
+          b-nav-item(to='/admin/adoption' exact exact-active-class='active') 領養管理
+          b-nav-item(to='/admin/member' exact exact-active-class='active') 會員管理
+      b-col(cols='12')
+        router-view.router
+</template>
+<style lang="scss">
+.col{
+  background-color: rgb(215, 250, 218);
+}
+#Admin {
+  .nav-link{
+    color: $daccent;
+    &.active{
+      color: $accent;
+    }
+  }
+  .router{
+    // background-color: aquamarine;
+    padding: 3rem 0;
+  }
+}
+</style>

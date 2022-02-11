@@ -12,7 +12,7 @@
               b-form-input#input-password(v-model="form.password" required placeholder='請輸入密碼' type='password' :state="state.password")
             .text-center
               b-btn.loginbtn.mx-1(type='submit') 登入
-  b-img.loginImg(src="../assets/login.png")
+  b-img.loginImg(src="../assets/loginImg.png")
 </template>
 
 <script>

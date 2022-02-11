@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -18,7 +19,7 @@ const routes = [
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
     meta: {
-      title: 'Mary’s Doggies'
+      title: 'Mary’s Doggies | About'
     }
   },
   {
@@ -26,7 +27,7 @@ const routes = [
     name: 'Happytail',
     component: () => import(/* webpackChunkName: "happytail" */ '../views/Happytail.vue'),
     meta: {
-      title: 'Mary’s Doggies'
+      title: 'Mary’s Doggies | Happytail'
     }
   },
   {
@@ -34,7 +35,7 @@ const routes = [
     name: 'Donate',
     component: () => import(/* webpackChunkName: "donate" */ '../views/Donate.vue'),
     meta: {
-      title: 'Mary’s Doggies'
+      title: 'Mary’s Doggies | Donate'
     }
   },
   {
@@ -42,7 +43,7 @@ const routes = [
     name: 'Volunteer',
     component: () => import(/* webpackChunkName: "volunteer" */ '../views/Volunteer.vue'),
     meta: {
-      title: 'Mary’s Doggies'
+      title: 'Mary’s Doggies | Volunteer'
     }
   },
   {
@@ -50,7 +51,7 @@ const routes = [
     name: 'Adoption',
     component: () => import(/* webpackChunkName: "adoption" */ '../views/Adoption.vue'),
     meta: {
-      title: 'Mary’s Doggies'
+      title: 'Mary’s Doggies | Adoption'
     }
   },
   {
@@ -58,7 +59,7 @@ const routes = [
     name: 'Register',
     component: () => import(/* webpackChunkName: "register" */ '../views/Register.vue'),
     meta: {
-      title: '註冊'
+      title: 'Mary’s Doggies | Register'
     }
   },
   {
@@ -66,13 +67,86 @@ const routes = [
     name: 'Login',
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
     meta: {
-      title: '登入'
+      title: 'Mary’s Doggies | Login'
     }
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: () => import(/* webpackChunkName: "admin" */ '../views/Admin.vue'),
+    children: [
+      {
+        path: '',
+        name: 'AdminHome',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/AdminHome.vue'),
+        meta: {
+          login: true,
+          admin: true,
+          title: 'Mary’s Doggies | 管理'
+        }
+      },
+      {
+        path: 'products',
+        name: 'AdminProducts',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/AdminProducts.vue'),
+        meta: {
+          login: true,
+          admin: true,
+          title: 'Mary’s Doggies | 募集商品管理'
+        }
+      },
+      {
+        path: 'orders',
+        name: 'AdminOrders',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/AdminOrders.vue'),
+        meta: {
+          login: true,
+          admin: true,
+          title: 'Mary’s Doggies | 募集訂單管理'
+        }
+      },
+      {
+        path: 'adoption',
+        name: 'AdminAdoption',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/AdminAdoption.vue'),
+        meta: {
+          login: true,
+          admin: true,
+          title: 'Mary’s Doggies | 領養管理'
+        }
+      },
+      {
+        path: 'member',
+        name: 'AdminMember',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/AdminMember.vue'),
+        meta: {
+          login: true,
+          admin: true,
+          title: 'Mary’s Doggies | 會員管理'
+        }
+      }
+    ]
+  },
+  {
+    path: '*',
+    name: 'NotFound',
+    redirect: '/'
   }
 ]
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const user = store.getters['user/user']
+  if (to.meta.login && !user.isLogin) {
+    next('/login')
+  } else if (to.meta.admin && !user.isAdmin) {
+    next('/')
+  } else {
+    next()
+  }
 })
 
 router.afterEach((to, from) => {

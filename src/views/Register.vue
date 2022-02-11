@@ -14,7 +14,7 @@
               b-form-input#input-email(v-model="form.email" required placeholder='請輸入信箱' type='text' :state="state.email")
             .text-center
               b-btn.regbtn.mx-1(type='submit') 註冊
-  b-img.loginImg(src="../assets/login.png")
+  b-img.loginImg(src="../assets/loginImg.png")
 </template>
 
 <script>

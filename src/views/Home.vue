@@ -32,15 +32,16 @@
   font-family: 'Modak', cursive;
   font-size: calc(60px + 3vw);
   color: $accent;
-  text-shadow: rgb(255, 255, 255) 3px 3px ;
+  text-shadow: #ffffff 3px 3px ;
   position: relative;
-  top: 30px;
+  top: 20px;
   line-height: 5rem;
+  user-select: none;
 }
 .content {
   padding: 4rem 2rem;
   border-radius: 4rem;
-  border: .8rem solid $accent;
+  border: .8rem solid $secondary;
   background-color: $primary;
   text-align: left;
   margin: 0 .5rem;
