@@ -23,7 +23,7 @@
           //- b-icon(icon='person-fill')
         b-nav-item(v-if="user.isLogin" @click="logout")|登出
   div.fakenav
-  a(href='#/about')
+  a.fix(href='#/about')
     .fixText| Donate<br>Today!
     img.fixImg(src="./assets/fiximg.png")
   router-view
@@ -96,38 +96,37 @@ export default {
   }
 
   50% {
-    transform: translateY(-30px)
+    transform: translateY(-25px)
   }
 
   to {
     transform: translateY(0px)
   }
 }
-.fixImg{
+.fix{
   position: fixed;
   right: -19px;
   bottom: 10%;
-  width: 100px;
   z-index: 9999;
   cursor: pointer;
   transition: .3s;
   &:hover {
     transform: scale(1.2);
   }
-  animation: jump 2s ease-in-out infinite;
+  animation: jump 4s ease-in-out infinite;
+}
+.fixImg{
+  width: 100px;
 }
 .fixText{
   position: fixed;
-  right: 8px;
   bottom: calc(10% - 50px);
   color: $accent;
   font-size: 19px;
-  z-index: 9999;
   font-weight: 700;
   text-shadow: 0px 0px 8px rgb(255, 255, 255);
   text-align: center;
   line-height: 1.5rem;
-  animation: jump 2s ease-in-out infinite;
 }
 #footer {
   width: 100%;
