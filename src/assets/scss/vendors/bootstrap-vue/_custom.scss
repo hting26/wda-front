@@ -26,17 +26,17 @@ $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
 
-$colors: () !default;
+// $colors: () !default;
 
 $primary:       #FBF1E4  !default;
 $secondary:     #D3E4CD !default;
 $accent:     #EAB454 !default;
 $daccent:     #8E9B8E !default;
 $dark2:     #455a45 !default;
-$success:       $green !default;
+$success:       #71b068 !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
-$danger:        $red !default;
+$danger:        #e84f4f !default;
 $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
 
@@ -50,6 +50,13 @@ $dark:          $gray-800 !default;
 // $dark:          $gray-800 !default;
 
 $theme-colors: () !default;
+// variant 新增變數名
+$theme-colors: map-merge(
+  (
+    'accent': $accent ,
+  ),
+  $theme-colors
+);
 
 // Set a specific jump point for requesting color jumps
 $theme-color-interval:      8% !default;

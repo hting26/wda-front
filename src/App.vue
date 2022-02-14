@@ -10,7 +10,7 @@
       </template>
     b-collapse#nav-collapse(is-nav)
       b-navbar-nav
-        b-nav-item.navR.mx-auto(v-for='(value, index) in hoverData' :to='value.to' @mouseover="value.hover = true" @mouseleave="value.hover = false")
+        b-nav-item.navR.mx-auto(v-for='(value, index) in hoverData' :to='value.to' :class='value.class' @mouseover="value.hover = true" @mouseleave="value.hover = false")
           div(v-if="value.hover === false") {{ value.eng }}
           div(v-else) {{ value.ch }}
       b-navbar-nav.ml-auto
@@ -23,6 +23,9 @@
           //- b-icon(icon='person-fill')
         b-nav-item(v-if="user.isLogin" @click="logout")|登出
   div.fakenav
+  a(href='#/about')
+    .fixText| Donate<br>Today!
+    img.fixImg(src="./assets/fiximg.png")
   router-view
   #footer
     //- div
@@ -39,7 +42,7 @@ export default {
       hoverData: [
         { eng: 'About', ch: '關於我們', hover: false, to: '/about' },
         { eng: 'Happy Tail', ch: '快樂時光', hover: false, to: '/happytail' },
-        { eng: 'Donate', ch: '愛心捐贈', hover: false, to: '/donate' },
+        { eng: 'Donate', ch: '愛心捐贈', hover: false, to: '/donate', class: 'b-dropdown' },
         { eng: 'Volunteer', ch: '招募志工', hover: false, to: '/volunteer' },
         { eng: 'Adoption', ch: '我要領養', hover: false, to: '/adoption' }
       ]
@@ -86,6 +89,45 @@ export default {
   justify-content: center;
   font-size: 1.1rem;
   font-weight: 500;
+}
+@keyframes jump {
+  from {
+    transform: translateY(0px)
+  }
+
+  50% {
+    transform: translateY(-30px)
+  }
+
+  to {
+    transform: translateY(0px)
+  }
+}
+.fixImg{
+  position: fixed;
+  right: -19px;
+  bottom: 10%;
+  width: 100px;
+  z-index: 9999;
+  cursor: pointer;
+  transition: .3s;
+  &:hover {
+    transform: scale(1.2);
+  }
+  animation: jump 2s ease-in-out infinite;
+}
+.fixText{
+  position: fixed;
+  right: 8px;
+  bottom: calc(10% - 50px);
+  color: $accent;
+  font-size: 19px;
+  z-index: 9999;
+  font-weight: 700;
+  text-shadow: 0px 0px 8px rgb(255, 255, 255);
+  text-align: center;
+  line-height: 1.5rem;
+  animation: jump 2s ease-in-out infinite;
 }
 #footer {
   width: 100%;

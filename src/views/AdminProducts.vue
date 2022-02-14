@@ -1,5 +1,5 @@
 <template lang="pug">
-#adminproduct
+#AdminProduct
   b-btn.my-3(v-b-modal.modal-product) 新增募集商品
   b-table(:items="products" :fields='fields' ref='table')
     template(#cell(image)='data')
@@ -223,15 +223,7 @@ export default {
 </script>
 
 <style lang="scss">
-.col{
+.col {
   background-color: rgb(215, 250, 218);
-}
-#Admin {
-  .nav-link{
-    color: $daccent;
-    &.active{
-      color: $accent;
-    }
-  }
 }
 </style>

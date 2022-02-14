@@ -17,15 +17,20 @@
   background-color: rgb(215, 250, 218);
 }
 #Admin {
-  .nav-link{
+  min-height: 67vh;
+  .nav-link {
     color: $daccent;
     &.active{
       color: $accent;
+      font-weight: bold;
     }
   }
-  .router{
+  .nav-item {
+  font-size: 20px;
+  }
+  .router {
     // background-color: aquamarine;
-    padding: 3rem 0;
+    padding: 2rem 0;
   }
 }
 </style>
