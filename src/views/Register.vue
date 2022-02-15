@@ -4,13 +4,13 @@
     b-row
       #regForm
         b-col(cols='12' md='6')
-          h3.text-center.mb-4.text-info 註冊
+          h3.text-center.mb-4.text-info 註冊 Register
           b-form(@submit.prevent="register")
-            b-form-group(label='帳號' label-for='input-account' description='帳號長度為 4 到 20 個字' :state="state.account" invalid-feedback="帳號格式不正確")
+            b-form-group(label='帳號 account' label-for='input-account' description='帳號長度為 4 到 20 個字' :state="state.account" invalid-feedback="帳號格式不正確")
               b-form-input#input-account(v-model="form.account" required placeholder='請輸入帳號' type='text' :state="state.account")
-            b-form-group(label='密碼' label-for='input-password' description='密碼長度為 4 到 20 個字' :state="state.password" invalid-feedback="密碼格式不正確")
+            b-form-group(label='密碼 password' label-for='input-password' description='密碼長度為 4 到 20 個字' :state="state.password" invalid-feedback="密碼格式不正確")
               b-form-input#input-password(v-model="form.password" required placeholder='請輸入密碼' type='password' :state="state.password")
-            b-form-group(label='信箱' label-for='input-email' description='請輸入有效的信箱' :state="state.email" invalid-feedback="信箱格式不正確")
+            b-form-group(label='信箱 email' label-for='input-email' description='請輸入有效的信箱' :state="state.email" invalid-feedback="信箱格式不正確")
               b-form-input#input-email(v-model="form.email" required placeholder='請輸入信箱' type='text' :state="state.email")
             .text-center
               b-btn.regbtn.mx-1(type='submit') 註冊

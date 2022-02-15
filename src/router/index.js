@@ -71,6 +71,15 @@ const routes = [
     }
   },
   {
+    path: '/cart',
+    name: 'Cart',
+    component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue'),
+    meta: {
+      title: 'Mary’s Doggies | Cart',
+      login: true
+    }
+  },
+  {
     path: '/admin',
     name: 'Admin',
     component: () => import(/* webpackChunkName: "admin" */ '../views/Admin.vue'),

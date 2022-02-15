@@ -4,10 +4,9 @@
     b-navbar-brand(to='/')
       img#logo(src="./assets/logo.png")
     b-navbar-toggle.toggle(target='nav-collapse')
-      <template #default="{ expanded }">
-        <b-icon v-if="expanded" icon="chevron-bar-up"></b-icon>
-        <b-icon v-else icon="chevron-bar-down"></b-icon>
-      </template>
+      template(#default='{ expanded }')
+        b-icon(v-if="expanded", icon='chevron-bar-up')
+        b-icon(v-else icon='chevron-bar-down')
     b-collapse#nav-collapse(is-nav)
       b-navbar-nav
         b-nav-item.navR.mx-auto(v-for='(value, index) in hoverData' :to='value.to' :class='value.class' @mouseover="value.hover = true" @mouseleave="value.hover = false")
@@ -15,13 +14,14 @@
           div(v-else) {{ value.ch }}
       b-navbar-nav.ml-auto
         b-nav-item(v-if="user.isLogin && user.isAdmin" to='/admin/products') 管理
-        b-nav-item(to='/cart')|物資籃
-          b-icon.ml-1(icon='heart')
-        b-nav-item(to='/register' v-if="!user.isLogin")|註冊
+        b-nav-item(to='/cart')|Donate Cart
+          b-icon.ml-1(icon='heart' font-scale="0.9")
+          b-badge.ml-1(pill variant='danger') {{ user.cart }}
+        b-nav-item(to='/register' v-if="!user.isLogin")|Register
           //- b-icon(icon='person-fill' )
-        b-nav-item(to='/login' v-if="!user.isLogin")|登入
+        b-nav-item(to='/login' v-if="!user.isLogin")|Login
           //- b-icon(icon='person-fill')
-        b-nav-item(v-if="user.isLogin" @click="logout")|登出
+        b-nav-item(v-if="user.isLogin" @click="logout")|Logout
   div.fakenav
   a.fix(href='#/about')
     .fixText| Donate<br>Today!
@@ -150,6 +150,7 @@ export default {
   height: 59.59px;
   width: 100%;
 }
+
 @media (min-width:768px) {
   #logo {
   width: 55px;
@@ -159,6 +160,7 @@ export default {
   width: 100%;
 }
 }
+
 @media (min-width:992px) {
   #logo {
   width: 95px;

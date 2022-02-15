@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     addCart () {
-      this.$store.dispatch('user/addCart', { product: this.product._id, quantity: this.quantity })
+      this.$store.dispatch('user/addCart', { product: this.product._id, quantity: 1 })
     }
   }
 }
@@ -28,7 +28,7 @@ export default {
 .card-product {
   border: none;
   // width: 190px;
-  .card-title a {
+  .card-title {
     color: $dark2;
     font-size: 18px;
     font-weight: 600;

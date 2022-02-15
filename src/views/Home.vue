@@ -5,8 +5,8 @@
     b-carousel-slide(img-src='../assets/carousel2.jpg' style="width: 1024; height: 480; object-fit: cover;")
     b-carousel-slide(img-src='../assets/carousel3.jpg' style="object-fit: cover;")
     b-carousel-slide(img-src='../assets/carousel4.jpg')
-  b-container#home
-    .titletext|Mary’s Doggies
+  b-container
+    .titleText|Mary’s Doggies
     b-row.content
       //- b-img.titleImg(src="../assets/marrysDog.png" fluid)
       b-col(cols='12' lg='6')
@@ -23,12 +23,12 @@
   text-align: center;
 }
 .container {
-  margin: 5rem auto;
+  margin: 3rem auto;
 }
 .titleImg {
   margin: 4rem auto;
 }
-.titletext{
+.titleText{
   font-family: 'Modak', cursive;
   font-size: calc(60px + 3vw);
   color: $accent;
