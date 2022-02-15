@@ -1,10 +1,9 @@
 <template lang="pug">
 b-card.card-product(img-top :img-src='product.image')
   b-card-body
-    b-card-title
-      router-link(:to='"/product/" + product._id') {{ product.name }}
-    b-card-sub-title {{ '$' + product.price }}
-    b-card-text(style='white-space: pre') {{ product.description }}
+    b-card-title {{ product.name }}
+    b-card-sub-title.mb-2 {{ '$' + product.price }}
+    b-card-text(style='white-space: pre-line') {{ product.description }}
     b-btn(@click='addCart') 加入物資籃
       b-icon.ml-1(icon='heart' style="width: 14px;")
 </template>
@@ -19,7 +18,7 @@ export default {
   },
   methods: {
     addCart () {
-      this.$store.dispatch('user/addCart', { product: this.$route.params.id, quantity: this.quantity })
+      this.$store.dispatch('user/addCart', { product: this.product._id, quantity: this.quantity })
     }
   }
 }
@@ -36,8 +35,12 @@ export default {
     text-decoration: none;
   }
   .card-img-top {
-    max-height: 330px;
+    max-height: 150px;
     object-fit: contain;
+  }
+  .card-text {
+    font-size: 15px;
+    text-align: left;
   }
 }
 </style>

@@ -86,13 +86,13 @@ export const addCart = async ({ commit, state }, data) => {
     swal.fire({
       icon: 'success',
       title: '成功',
-      text: '加入購物車成功'
+      text: '加入物資籃成功'
     })
   } catch (error) {
     swal.fire({
       icon: 'error',
       title: '錯誤',
-      text: '加入購物車失敗'
+      text: '加入物資籃失敗'
     })
   }
 }

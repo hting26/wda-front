@@ -1,13 +1,13 @@
 <template lang="pug">
 #AdminProduct
-  b-btn.my-3(v-b-modal.modal-product) 新增募集商品
+  b-btn.addbtn.my-3(v-b-modal.modal-product variant='accent') 新增募集商品
   b-table(:items="products" :fields='fields' ref='table')
     template(#cell(image)='data')
       img(v-if='data.item.image' :src='data.item.image' style='height: 50px')
     template(#cell(sell)='data')
       | {{ data.item.sell ? 'v' : '' }}
     template(#cell(action)='data')
-      b-btn(variant='success' @click='editProduct(data.index)') 編輯
+      b-btn(@click='editProduct(data.index)') 編輯
   b-modal#modal-product(
     :title="form._id.length > 0 ? '編輯商品' : '新增商品'"
     centered
@@ -223,7 +223,13 @@ export default {
 </script>
 
 <style lang="scss">
-.col {
-  background-color: rgb(215, 250, 218);
+#AdminProduct {
+  // background-color: antiquewhite;
+  .addbtn {
+    color: #fff;
+    left: 100%;
+    transform: translateX(-100%);
+    position: relative;
+  }
 }
 </style>

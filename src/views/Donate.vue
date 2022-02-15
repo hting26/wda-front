@@ -2,7 +2,7 @@
 b-container#home
   h2.pagetitle 物資募集
     b-row
-      b-col.my-2(cols='12' sm='4' lg='3' v-for='product in products' :key='product._id')
+      b-col.my-2(cols='12' sm='6' lg='3' v-for='product in products' :key='product._id')
         ProductCard(:product='product')
 </template>
 

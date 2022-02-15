@@ -14,7 +14,7 @@
           div(v-if="value.hover === false") {{ value.eng }}
           div(v-else) {{ value.ch }}
       b-navbar-nav.ml-auto
-        b-nav-item(v-if="user.isLogin && user.isAdmin" to='/admin') 管理
+        b-nav-item(v-if="user.isLogin && user.isAdmin" to='/admin/products') 管理
         b-nav-item(to='/cart')|物資籃
           b-icon.ml-1(icon='heart')
         b-nav-item(to='/register' v-if="!user.isLogin")|註冊
@@ -25,6 +25,7 @@
   div.fakenav
   a.fix(href='#/about')
     .fixText| Donate<br>Today!
+      .ch 我要捐款
     img.fixImg(src="./assets/fiximg.png")
   router-view
   #footer
@@ -106,7 +107,7 @@ export default {
 .fix{
   position: fixed;
   right: -19px;
-  bottom: 10%;
+  bottom: 15%;
   z-index: 9999;
   cursor: pointer;
   transition: .3s;
@@ -120,13 +121,18 @@ export default {
 }
 .fixText{
   position: fixed;
-  bottom: calc(10% - 50px);
+  bottom: calc(10% - 74px);
   color: $accent;
   font-size: 19px;
   font-weight: 700;
   text-shadow: 0px 0px 8px rgb(255, 255, 255);
   text-align: center;
   line-height: 1.5rem;
+  .ch {
+    font-weight: normal;
+    font-size: 15px;
+    color: $daccent;
+  }
 }
 #footer {
   width: 100%;
