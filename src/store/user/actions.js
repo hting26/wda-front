@@ -8,9 +8,12 @@ export const login = async ({ commit }, form) => {
     commit('login', data.result)
     router.push('/')
     swal.fire({
+      position: 'top-end',
       icon: 'success',
       title: '成功',
-      text: '登入成功'
+      text: '登入成功',
+      showConfirmButton: false,
+      timer: 1000
     })
   } catch (error) {
     swal.fire({
@@ -31,9 +34,12 @@ export const logout = async ({ commit, state }) => {
     commit('logout')
     router.push('/')
     swal.fire({
+      position: 'top-end',
       icon: 'success',
       title: '成功',
-      text: '登出成功'
+      text: '登出成功',
+      showConfirmButton: false,
+      timer: 1000
     })
   } catch (error) {
     swal.fire({

@@ -1,18 +1,22 @@
 <template lang="pug">
-#cart
+#cart.text-center
   b-container
     h3.pageTitle 物資籃 Donate Cart
-    b-table.mt-5(:items='products' :fields='fields' :tbody-tr-class="rowClass")
+    b-table.mt-5(:items='products' :fields='fields' :tbody-tr-class="rowClass" show-empty)
+      template(#empty)
+        div.my-5
+          p 物資籃目前沒有商品
+          a(href='#/donate') 點我去選購捐贈物資 :)
       template(#cell(image)='data')
         img(v-if='data.item.product.image' :src='data.item.product.image' style='height: 50px')
       template(#cell(name)='data')
         | {{ data.item.product.name }}
       template(#cell(price)='data')
-        | {{ data.item.product.price }}
+        | NT.{{ data.item.product.price }}
       template(#cell(action)='data')
         b-form-spinbutton(v-model='data.item.quantity' min="1" inline @input='updateCart(data.index, data.item.quantity)')
         | &emsp;
-        b-btn(variant='danger' @click='updateCart(data.index, 0)') X
+        b-icon.trashbtn.ml-2(icon='trash' variant='danger' @click='updateCart(data.index, 0)') X
     p.text-center 總金額 {{ total }}
     b-btn.checkbtn(size="lg" variant='accent' @click='checkout' :disabled='products.length === 0') 結帳
 </template>
@@ -103,15 +107,23 @@ export default {
 
 <style lang="scss">
 #cart {
-  text-align: center;
+  min-height: 660px;
   .pageTitle {
     color: $accent;
+  }
+  a {
+    color: $daccent;
+    text-decoration: none;
   }
   .table {
     border: none;
   }
   .checkbtn {
     color: #fff;
+  }
+  .trashbtn {
+    cursor: pointer;
+    font-size: 1.5rem;
   }
 }
 </style>

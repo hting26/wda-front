@@ -50,6 +50,9 @@ export default {
   }
   .b-icon {
     cursor: pointer;
+    &:focus {
+      outline: none;
+    }
   }
 }
 </style>

@@ -1,8 +1,6 @@
 <template lang="pug">
-#adminorders
+b-container#orders
   b-table(:items="orders" :fields='fields')
-    template(#cell(user)='data')
-      | {{ data.item.user.account}}
     template(#cell(date)='data')
       | {{ new Date(data.item.date).toLocaleString('zh-tw') }}
     template(#cell(products)='data')
@@ -17,7 +15,6 @@ export default {
       orders: [],
       fields: [
         { key: '_id', label: '單號' },
-        { key: 'user', label: '使用者' },
         { key: 'date', label: '日期' },
         { key: 'products', label: '商品' }
       ]
@@ -25,7 +22,7 @@ export default {
   },
   async created () {
     try {
-      const { data } = await this.api.get('/orders/all', {
+      const { data } = await this.api.get('/orders/me', {
         headers: {
           authorization: 'Bearer ' + this.user.token
         }

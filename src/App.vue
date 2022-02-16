@@ -13,9 +13,10 @@
           div(v-if="value.hover === false") {{ value.eng }}
           div(v-else) {{ value.ch }}
       b-navbar-nav.ml-auto
+        b-nav-item(v-if="user.isLogin && !user.isAdmin" to='/member/data') Member
         b-nav-item(v-if="user.isLogin && user.isAdmin" to='/admin/products') 管理
         b-nav-item(to='/cart')|Donate Cart
-          b-icon.ml-1(icon='heart' font-scale="0.9")
+          //- b-icon.ml-1(icon='heart' font-scale="0.9")
           b-badge.ml-1(pill variant='danger') {{ user.cart }}
         b-nav-item(to='/register' v-if="!user.isLogin")|Register
           //- b-icon(icon='person-fill' )
@@ -43,7 +44,7 @@ export default {
       hoverData: [
         { eng: 'About', ch: '關於我們', hover: false, to: '/about' },
         { eng: 'Happy Tail', ch: '快樂時光', hover: false, to: '/happytail' },
-        { eng: 'Donate', ch: '愛心捐贈', hover: false, to: '/donate', class: 'b-dropdown' },
+        { eng: 'Donate', ch: '物資募集', hover: false, to: '/donate', class: 'b-dropdown' },
         { eng: 'Volunteer', ch: '招募志工', hover: false, to: '/volunteer' },
         { eng: 'Adoption', ch: '我要領養', hover: false, to: '/adoption' }
       ]
@@ -108,7 +109,7 @@ export default {
   position: fixed;
   right: -19px;
   bottom: 15%;
-  z-index: 9999;
+  z-index: 999;
   cursor: pointer;
   transition: .3s;
   &:hover {

@@ -1,6 +1,6 @@
 <template lang="pug">
 #AdminProduct
-  b-btn.addbtn.my-3(v-b-modal.modal-product variant='accent') 新增募集商品
+  b-btn.addbtn.my-3(v-b-modal.modal-product variant='accent') 新增商品
   b-table(:items="products" :fields='fields' ref='table')
     template(#cell(image)='data')
       img(v-if='data.item.image' :src='data.item.image' style='height: 50px')

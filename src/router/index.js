@@ -80,20 +80,44 @@ const routes = [
     }
   },
   {
+    path: '/member',
+    name: 'Member',
+    component: () => import(/* webpackChunkName: "member" */ '../views/Member.vue'),
+    children: [
+      {
+        path: 'data',
+        name: 'MemberData',
+        component: () => import(/* webpackChunkName: "member" */ '../views/MemberData.vue'),
+        meta: {
+          login: true,
+          title: 'Mary’s Doggies | Member'
+        }
+      },
+      {
+        path: 'orders',
+        name: 'MemberOrders',
+        component: () => import(/* webpackChunkName: "member" */ '../views/MemberOrders.vue'),
+        meta: {
+          login: true,
+          title: 'Mary’s Doggies | Member'
+        }
+      },
+      {
+        path: 'adoption',
+        name: 'MemberAdoption',
+        component: () => import(/* webpackChunkName: "member" */ '../views/MemberAdoption.vue'),
+        meta: {
+          login: true,
+          title: 'Mary’s Doggies | Member'
+        }
+      }
+    ]
+  },
+  {
     path: '/admin',
     name: 'Admin',
     component: () => import(/* webpackChunkName: "admin" */ '../views/Admin.vue'),
     children: [
-      {
-        path: '',
-        name: 'AdminHome',
-        component: () => import(/* webpackChunkName: "admin" */ '../views/AdminHome.vue'),
-        meta: {
-          login: true,
-          admin: true,
-          title: 'Mary’s Doggies | 管理'
-        }
-      },
       {
         path: 'products',
         name: 'AdminProducts',
