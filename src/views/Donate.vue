@@ -1,7 +1,5 @@
 <template lang="pug">
 b-container#donate
-  //- b-collapse#collapse-3(visible='')
-  //-   b-card I should start open!
   h3.pageTitle 物資募集
   b-icon(icon='caret-down', v-b-toggle.collapse-3 variant='accent')
   b-collapse#collapse-3(visible)

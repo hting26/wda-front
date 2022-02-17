@@ -139,23 +139,23 @@ const routes = [
         }
       },
       {
+        path: 'dogs',
+        name: 'AdminDogs',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/AdminDogs.vue'),
+        meta: {
+          login: true,
+          admin: true,
+          title: 'Mary’s Doggies | 領養犬管理'
+        }
+      },
+      {
         path: 'adoption',
         name: 'AdminAdoption',
         component: () => import(/* webpackChunkName: "admin" */ '../views/AdminAdoption.vue'),
         meta: {
           login: true,
           admin: true,
-          title: 'Mary’s Doggies | 領養管理'
-        }
-      },
-      {
-        path: 'member',
-        name: 'AdminMember',
-        component: () => import(/* webpackChunkName: "admin" */ '../views/AdminMember.vue'),
-        meta: {
-          login: true,
-          admin: true,
-          title: 'Mary’s Doggies | 會員管理'
+          title: 'Mary’s Doggies | 領養申請管理'
         }
       }
     ]
