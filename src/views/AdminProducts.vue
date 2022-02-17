@@ -1,7 +1,7 @@
 <template lang="pug">
 #AdminProduct
   b-btn.addbtn.my-3(v-b-modal.modal-product variant='accent') 新增商品
-  b-table(:items="products" :fields='fields' ref='table')
+  b-table.text-center(:items="products" :fields='fields' ref='table')
     template(#cell(image)='data')
       img(v-if='data.item.image' :src='data.item.image' style='height: 50px')
     template(#cell(sell)='data')
@@ -9,6 +9,7 @@
     template(#cell(action)='data')
       b-btn(@click='editProduct(data.index)') 編輯
   b-modal#modal-product(
+    size="lg"
     :title="form._id.length > 0 ? '編輯商品' : '新增商品'"
     centered
     ok-variant='success'
@@ -84,7 +85,7 @@
       accept="image/*"
       v-model="form.image"
       theme="light"
-      size="large"
+      size="small"
       bottom-text="點選或拖拽圖片以修改"
       hover-text="點選或拖拽圖片以修改"
       placeholder="點選或拖拽選擇圖片"
@@ -98,13 +99,13 @@ export default {
   data () {
     return {
       fields: [
-        { key: 'image', label: '圖片' },
-        { key: 'name', label: '名稱' },
-        { key: 'price', label: '價格' },
-        { key: 'category', label: '分類' },
-        { key: 'description', label: '說明' },
-        { key: 'sell', label: '上架' },
-        { key: 'action', label: '操作' }
+        { key: 'image', label: '圖片', class: 'td' },
+        { key: 'name', label: '名稱', class: 'td' },
+        { key: 'price', label: '價格', class: 'td' },
+        { key: 'category', label: '分類', class: 'td' },
+        { key: 'description', label: '說明', class: 'td' },
+        { key: 'sell', label: '上架', class: 'td' },
+        { key: 'action', label: '操作', class: 'td' }
       ],
       products: [],
       modalSubmitting: false,
@@ -230,6 +231,12 @@ export default {
     left: 100%;
     transform: translateX(-100%);
     position: relative;
+  }
+  .td {
+    max-width: 350px;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
 </style>

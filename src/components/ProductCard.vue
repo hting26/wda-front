@@ -42,5 +42,8 @@ export default {
     font-size: 15px;
     text-align: left;
   }
+  .btn {
+    color: $dark2;
+  }
 }
 </style>

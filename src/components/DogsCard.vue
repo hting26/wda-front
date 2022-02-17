@@ -3,8 +3,6 @@ b-card.card-adoption(img-top :img-src='dog.image')
   b-card-body
     b-card-title {{ dog.name }}
     b-card-text(style='white-space: pre-line') {{ dog.description }}
-    b-btn(@click='apply') 申請領養
-      b-icon.ml-1(icon='heart' style="width: 14px;")
 </template>
 
 <script>
@@ -25,7 +23,7 @@ export default {
 
 <style lang="scss">
 .card-adoption {
-  border: none;
+  // border: none;
   // width: 190px;
   .card-title {
     color: $dark2;
@@ -34,12 +32,17 @@ export default {
     text-decoration: none;
   }
   .card-img-top {
-    max-height: 150px;
+    // max-height: 150px;
     object-fit: contain;
   }
   .card-text {
-    font-size: 15px;
+    font-size: 17px;
     text-align: left;
+  }
+  .btn{
+    color: $dark2;
+    // font-weight: 600;
+    font-size: 17px;
   }
 }
 </style>

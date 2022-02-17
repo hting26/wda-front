@@ -1,15 +1,18 @@
 <template lang="pug">
-#AdminProduct
-  b-btn.addbtn.my-3(v-b-modal.modal-product variant='accent') 新增商品
-  b-table(:items="products" :fields='fields' ref='table')
+#AdminDogs
+  b-btn.addbtn.my-3(v-b-modal.modal-dog variant='accent') 新增
+  b-table.text-center(:items="dogs" :fields='fields' ref='table')
     template(#cell(image)='data')
       img(v-if='data.item.image' :src='data.item.image' style='height: 50px')
+    template.text-truncate(#cell(description)='data')
+      | {{ data.item.description }}
     template(#cell(sell)='data')
       | {{ data.item.sell ? 'v' : '' }}
     template(#cell(action)='data')
-      b-btn(@click='editProduct(data.index)') 編輯
-  b-modal#modal-product(
-    :title="form._id.length > 0 ? '編輯商品' : '新增商品'"
+      b-btn(@click='editDog(data.index)') 編輯
+  b-modal#modal-dog(
+    size="lg"
+    :title="form._id.length > 0 ? '編輯' : '新增'"
     centered
     ok-variant='success'
     ok-title='送出'
@@ -21,50 +24,21 @@
     :cancel-disabled="modalSubmitting"
   )
     b-form-group(
-      label='商品名稱'
+      label='名字'
       label-for='input-name'
       description='必填欄位'
-      invalid-feedback='商品名稱必填'
+      invalid-feedback='名字必填'
       :state='state.name'
     )
       b-form-input#input-name(
         v-model='form.name'
         type='text'
         required
-        placeholder='請輸入商品名稱'
+        placeholder='請輸入名字'
         :state='state.name'
       )
     b-form-group(
-      label='商品價格'
-      label-for='input-price'
-      description='必填欄位'
-      invalid-feedback='價格必須是 0 元以上'
-      :state='state.price'
-    )
-      b-form-input#input-price(
-        v-model.number='form.price'
-        type='number'
-        min='0'
-        required
-        placeholder='請輸入商品價格'
-        :state='state.price'
-      )
-    b-form-group(
-      label='商品分類'
-      label-for='input-category'
-      description='必填欄位'
-      invalid-feedback='分類必填'
-      :state='state.category'
-    )
-      b-form-select#input-category(
-        v-model='form.category'
-        required
-        :options="categories"
-        placeholder='請輸入商品分類'
-        :state='state.category'
-      )
-    b-form-group(
-      label='商品說明'
+      label='說明'
       label-for='input-description'
       description='必填欄位'
       invalid-feedback='說明必填'
@@ -73,21 +47,20 @@
       b-form-textarea#input-description(
         v-model='form.description'
         required
-        rows="3"
-        max-rows="6"
-        placeholder='請輸入商品說明'
+        rows="6"
+        placeholder='請輸入說明'
       )
-    b-form-group(label='上架')
-      b-form-radio(v-model='form.sell' :value='true') 上架
-      b-form-radio(v-model='form.sell' :value='false') 下架
+    b-form-group(label='開放領養')
+      b-form-radio(v-model='form.sell' :value='true' default) 開放
+      b-form-radio(v-model='form.sell' :value='false') 不開放
     img-inputer(
       accept="image/*"
       v-model="form.image"
       theme="light"
-      size="large"
-      bottom-text="點選或拖拽圖片以修改"
-      hover-text="點選或拖拽圖片以修改"
-      placeholder="點選或拖拽選擇圖片"
+      size="mediun"
+      bottom-text="點選或拖曳圖片以修改"
+      hover-text="點選或拖曳圖片以修改"
+      placeholder="點選或拖曳選擇圖片"
       :max-size="1024"
       exceed-size-text="檔案大小不能超過"
     )
@@ -98,27 +71,19 @@ export default {
   data () {
     return {
       fields: [
-        { key: 'image', label: '圖片' },
-        { key: 'name', label: '名稱' },
-        { key: 'price', label: '價格' },
-        { key: 'category', label: '分類' },
-        { key: 'description', label: '說明' },
-        { key: 'sell', label: '上架' },
-        { key: 'action', label: '操作' }
+        { key: 'image', label: '圖片', class: 'td' },
+        { key: 'name', label: '名字', class: 'td' },
+        { key: 'description', label: '說明', class: 'td' },
+        { key: 'sell', label: '開放領養', class: 'td' },
+        { key: 'action', label: '操作', class: 'td' }
       ],
-      products: [],
+      dogs: [],
       modalSubmitting: false,
-      categories: [
-        { text: '請選擇分類', value: '' },
-        '飼料', '玩具', '消耗品'
-      ],
       form: {
         name: '',
-        price: null,
         description: '',
         image: null,
         sell: false,
-        category: '',
         _id: '',
         index: -1
       }
@@ -127,16 +92,14 @@ export default {
   computed: {
     state () {
       return {
-        name: this.form.name.length === 0 ? null : true,
-        price: this.form.price === null ? null : this.form.price >= 0,
-        category: this.form.category.length === 0 ? null : true
+        name: this.form.name.length === 0 ? null : true
       }
     }
   },
   methods: {
     async submitModal (event) {
       event.preventDefault()
-      if (!this.state.name || !this.state.price || !this.state.category) {
+      if (!this.state.name) {
         this.$swal({
           icon: 'error',
           title: '錯誤',
@@ -155,23 +118,23 @@ export default {
 
       try {
         if (this.form._id.length === 0) {
-          const { data } = await this.api.post('/products', fd, {
+          const { data } = await this.api.post('/dogs', fd, {
             headers: {
               authorization: 'Bearer ' + this.user.token
             }
           })
-          this.products.push(data.result)
+          this.dogs.push(data.result)
         } else {
-          const { data } = await this.api.patch('/products/' + this.form._id, fd, {
+          const { data } = await this.api.patch('/dogs/' + this.form._id, fd, {
             headers: {
               authorization: 'Bearer ' + this.user.token
             }
           })
-          this.products[this.form.index] = { ...this.form, image: data.result.image }
+          this.dogs[this.form.index] = { ...this.form, image: data.result.image }
           this.$refs.table.refresh()
         }
 
-        this.$bvModal.hide('modal-product')
+        this.$bvModal.hide('modal-dog')
       } catch (error) {
         this.$swal({
           icon: 'error',
@@ -198,19 +161,19 @@ export default {
         index: -1
       }
     },
-    editProduct (index) {
-      this.form = { ...this.products[index], image: null, index }
-      this.$bvModal.show('modal-product')
+    editDog (index) {
+      this.form = { ...this.dogs[index], image: null, index }
+      this.$bvModal.show('modal-dog')
     }
   },
   async created () {
     try {
-      const { data } = await this.api.get('/products/all', {
+      const { data } = await this.api.get('/dogs/all', {
         headers: {
           authorization: 'Bearer ' + this.user.token
         }
       })
-      this.products = data.result
+      this.dogs = data.result
     } catch (error) {
       this.$swal({
         icon: 'error',
@@ -223,13 +186,18 @@ export default {
 </script>
 
 <style lang="scss">
-#AdminProduct {
-  // background-color: antiquewhite;
+#AdminDogs {
   .addbtn {
     color: #fff;
     left: 100%;
     transform: translateX(-100%);
     position: relative;
+  }
+  .td {
+    max-width: 350px;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
 </style>
