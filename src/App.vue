@@ -162,7 +162,7 @@ export default {
 }
 }
 
-@media (min-width:992px) {
+@media (min-width:1400px) {
   #logo {
   width: 95px;
   }

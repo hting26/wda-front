@@ -51,7 +51,7 @@
         placeholder='請輸入說明'
       )
     b-form-group(label='開放領養')
-      b-form-radio(v-model='form.sell' :value='true' default) 開放
+      b-form-radio(v-model='form.sell' :value='true') 開放
       b-form-radio(v-model='form.sell' :value='false') 不開放
     img-inputer(
       accept="image/*"
@@ -83,7 +83,7 @@ export default {
         name: '',
         description: '',
         image: null,
-        sell: false,
+        sell: true,
         _id: '',
         index: -1
       }
@@ -92,14 +92,15 @@ export default {
   computed: {
     state () {
       return {
-        name: this.form.name.length === 0 ? null : true
+        name: this.form.name.length === 0 ? null : true,
+        description: this.form.description.length === 0 ? null : true
       }
     }
   },
   methods: {
     async submitModal (event) {
       event.preventDefault()
-      if (!this.state.name) {
+      if (!this.state.name || !this.state.description) {
         this.$swal({
           icon: 'error',
           title: '錯誤',
