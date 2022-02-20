@@ -3,7 +3,7 @@ b-card.card-adoption(img-top :img-src='dog.image')
   b-card-body
     b-card-title {{ dog.name }}
     b-card-text(style='white-space: pre-line') {{ dog.description }}
-    b-btn(@click='apply(data.index)') 申請領養
+    b-btn(@click='apply(dog.index)') 申請領養
   b-modal#modal-apply
     |555
   //- b-modal#modal-apply(
@@ -33,7 +33,7 @@ export default {
     //   this.$store.dispatch('user/addCart', { product: this.product._id, quantity: 1 })
     // }
     apply (index) {
-      this.form = { ...this.dogs[index], index }
+      // this.form = { ...this.dogs[index], index }
       this.$bvModal.show('modal-apply')
     }
   }
