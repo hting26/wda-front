@@ -103,7 +103,7 @@ const routes = [
         }
       },
       {
-        path: 'adoption',
+        path: 'adoptions',
         name: 'MemberAdoption',
         component: () => import(/* webpackChunkName: "member" */ '../views/MemberAdoption.vue'),
         meta: {
@@ -149,7 +149,7 @@ const routes = [
         }
       },
       {
-        path: 'adoption',
+        path: 'adoptions',
         name: 'AdminAdoption',
         component: () => import(/* webpackChunkName: "admin" */ '../views/AdminAdoption.vue'),
         meta: {

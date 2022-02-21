@@ -156,7 +156,7 @@ export default {
         price: 0,
         description: '',
         image: null,
-        sell: false,
+        sell: true,
         category: '',
         _id: '',
         index: -1

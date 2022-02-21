@@ -86,9 +86,9 @@
       v-model="form.image"
       theme="light"
       size="small"
-      bottom-text="點選或拖拽圖片以修改"
-      hover-text="點選或拖拽圖片以修改"
-      placeholder="點選或拖拽選擇圖片"
+      bottom-text="點選或拖曳圖片以修改"
+      hover-text="點選或拖曳圖片以修改"
+      placeholder="點選或拖曳選擇圖片"
       :max-size="1024"
       exceed-size-text="檔案大小不能超過"
     )

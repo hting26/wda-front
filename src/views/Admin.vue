@@ -8,7 +8,7 @@
           b-nav-item(to='/admin/products' exact exact-active-class='active') 募集商品管理
           b-nav-item(to='/admin/orders' exact exact-active-class='active') 募集訂單管理
           b-nav-item(to='/admin/dogs' exact exact-active-class='active') 領養犬管理
-          b-nav-item(to='/admin/adoption' exact exact-active-class='active') 領養申請管理
+          b-nav-item(to='/admin/adoptions' exact exact-active-class='active') 領養申請管理
       b-col(cols='12')
         router-view.router
 </template>
