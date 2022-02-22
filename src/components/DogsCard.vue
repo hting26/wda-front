@@ -13,8 +13,8 @@ b-card.card-adoption(img-top :img-src='dog.image')
     @hidden="resetForm"
     )
     div.my-3
-      img.mx-auto.img-fluid.d-block.mb-3(:src='dog.image' style='width: 150px')
-      h6.text-center 狗狗名字： {{ dog.name }}
+      img.mx-auto.img-fluid.d-block.mb-3(:src='dog.image' style='width: 230px')
+      h6.text-center {{ dog.name }}
     b-form-group(
       label='申請人姓名'
       label-for='input-name'
