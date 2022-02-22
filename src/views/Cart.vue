@@ -53,7 +53,7 @@ export default {
         this.$swal({
           icon: 'error',
           title: '失敗',
-          text: '修改購物車失敗'
+          text: '修改物資籃失敗'
         })
       }
     },
@@ -64,7 +64,12 @@ export default {
             authorization: 'Bearer ' + this.user.token
           }
         })
-        this.$router.push('/orders')
+        this.$swal({
+          icon: 'success',
+          title: '成功',
+          text: '結帳成功'
+        })
+        this.$router.push('/member/orders')
         this.$store.commit('user/updateCart', 0)
       } catch (error) {
         this.$swal({

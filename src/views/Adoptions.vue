@@ -1,10 +1,11 @@
 <template lang="pug">
-b-container#adminadoptions
+b-container#adoptions
   b-table(:items="adoptions" :fields='fields')
-    template(#cell(user)='data')
-      | {{ data.item.user.account}}
     template(#cell(date)='data')
       | {{ new Date(data.item.date).toLocaleString('zh-tw') }}
+    template(#cell(dogs)='data')
+      ul
+        li(v-for='dog in data.item.dogs' :key='dog._id') {{ dog.dog.name }}
 </template>
 
 <script>
@@ -13,16 +14,15 @@ export default {
     return {
       adoptions: [],
       fields: [
-        { key: 'user', label: '申請者' },
-        { key: 'dog', label: '領養犬名' },
+        { key: '_id', label: '申請編號' },
         { key: 'date', label: '日期' },
-        { key: '_id', label: '申請編號' }
+        { key: 'dogs', label: '' }
       ]
     }
   },
   async created () {
     try {
-      const { data } = await this.api.get('/adoptions/all', {
+      const { data } = await this.api.get('/adoptions/me', {
         headers: {
           authorization: 'Bearer ' + this.user.token
         }

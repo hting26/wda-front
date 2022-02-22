@@ -6,13 +6,15 @@ b-card.card-adoption(img-top :img-src='dog.image')
     b-btn(@click='apply') 申請領養
   b-modal(
     title="申請領養"
-    @ok="submitModal"
+    @ok="submitApply"
     :id="'modal-apply'+ dog._id"
+    :ok-disabled="modalSubmitting"
+    :cancel-disabled="modalSubmitting"
+    @hidden="resetForm"
     )
-    //- @hidden="resetForm"
-    //- :ok-disabled="modalSubmitting"
-    //- :cancel-disabled="modalSubmitting"
-    | 狗狗名字： {{ dog.name }}
+    div.my-3
+      img.mx-auto.img-fluid.d-block.mb-3(:src='dog.image' style='width: 150px')
+      h6.text-center 狗狗名字： {{ dog.name }}
     b-form-group(
       label='申請人姓名'
       label-for='input-name'
@@ -59,8 +61,11 @@ export default {
       form: {
         name: '',
         phone: '',
-        description: ''
-      }
+        description: '',
+        dogName: 'dog.name',
+        dog: 'dog._id'
+      },
+      modalSubmitting: false
     }
   },
   props: {
@@ -79,7 +84,7 @@ export default {
     }
   },
   methods: {
-    async submitModal (event) {
+    async submitApply (event) {
       event.preventDefault()
       if (!this.state.name || !this.state.phone || !this.state.description) {
         this.$swal({
@@ -90,8 +95,9 @@ export default {
         return
       }
       this.modalSubmitting = true
+
       try {
-        await this.api.post('/adoptions', {}, {
+        await this.api.post('/adoptions', this.form, {
           headers: {
             authorization: 'Bearer ' + this.user.token
           }
@@ -101,52 +107,30 @@ export default {
           title: '成功',
           text: '申請已送出'
         })
+        this.$bvModal.hide('modal-apply' + this.dog._id)
+        console.log('999')
       } catch (error) {
         this.$swal({
           icon: 'error',
           title: '失敗',
-          text: '申請失敗'
+          text: '申請送出失敗'
         })
       }
-
-      // const fd = new FormData()
-      // for (const key in this.form) {
-      //   if (key !== '_id') {
-      //     fd.append(key, this.form[key])
-      //   }
-      // }
-
-      // try {
-      //   if (this.form._id.length === 0) {
-      //     const { data } = await this.api.post('/products', fd, {
-      //       headers: {
-      //         authorization: 'Bearer ' + this.user.token
-      //       }
-      //     })
-      //     this.products.push(data.result)
-      //   } else {
-      //     const { data } = await this.api.patch('/products/' + this.form._id, fd, {
-      //       headers: {
-      //         authorization: 'Bearer ' + this.user.token
-      //       }
-      //     })
-      //     this.products[this.form.index] = { ...this.form, image: data.result.image }
-      //     this.$refs.table.refresh()
-      //   }
-
-      //   this.$bvModal.hide('modal-product')
-      // } catch (error) {
-      //   this.$swal({
-      //     icon: 'error',
-      //     title: '錯誤',
-      //     text: error.response.data.message
-      //   })
-      // }
-
-      // this.modalSubmitting = false
     },
     apply () {
       this.$bvModal.show('modal-apply' + this.dog._id)
+      this.form.dog = this.dog._id
+    },
+    resetForm (event) {
+      if (this.modalSubmitting) {
+        event.preventDefault()
+        return
+      }
+      this.form = {
+        name: '',
+        phone: '',
+        description: ''
+      }
     }
   }
 }
