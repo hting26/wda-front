@@ -16,7 +16,7 @@ export default {
       fields: [
         { key: '_id', label: '申請編號' },
         { key: 'date', label: '日期' },
-        { key: 'dogs', label: '' }
+        { key: 'dog', label: '' }
       ]
     }
   },

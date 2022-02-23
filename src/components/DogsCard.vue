@@ -61,9 +61,7 @@ export default {
       form: {
         name: '',
         phone: '',
-        description: '',
-        dogName: 'dog.name',
-        dog: 'dog._id'
+        description: ''
       },
       modalSubmitting: false
     }
@@ -108,7 +106,6 @@ export default {
           text: '申請已送出'
         })
         this.$bvModal.hide('modal-apply' + this.dog._id)
-        console.log('999')
       } catch (error) {
         this.$swal({
           icon: 'error',
