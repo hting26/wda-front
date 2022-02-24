@@ -80,15 +80,6 @@ const routes = [
     }
   },
   {
-    path: '/adoptions',
-    name: 'Adoptions',
-    component: () => import(/* webpackChunkName: "adoptions" */ '../views/Adoptions.vue'),
-    meta: {
-      title: 'Mary’s Doggies | adoptions',
-      login: true
-    }
-  },
-  {
     path: '/member',
     name: 'Member',
     component: () => import(/* webpackChunkName: "member" */ '../views/Member.vue'),
@@ -112,7 +103,7 @@ const routes = [
         }
       },
       {
-        path: 'adoptions',
+        path: 'adoption',
         name: 'MemberAdoption',
         component: () => import(/* webpackChunkName: "member" */ '../views/MemberAdoption.vue'),
         meta: {

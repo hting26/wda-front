@@ -1,5 +1,5 @@
 <template lang="pug">
-#Member
+#memberData
   b-container
     b-row
       b-table-simple
@@ -15,7 +15,7 @@
 .col{
   background-color: rgb(215, 250, 218);
 }
-#Member {
+#memberData {
   min-height: 67vh;
   .nav-link {
     color: $daccent;

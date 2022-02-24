@@ -15,7 +15,7 @@
   background-color: rgb(215, 250, 218);
 }
 #Member {
-  min-height: 67vh;
+  min-height: 73vh;
   .nav-link {
     color: $daccent;
     &.active{

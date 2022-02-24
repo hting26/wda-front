@@ -61,7 +61,8 @@ export default {
       form: {
         name: '',
         phone: '',
-        description: ''
+        description: '',
+        dog: ''
       },
       modalSubmitting: false
     }

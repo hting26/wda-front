@@ -2,7 +2,7 @@
 b-container#about
     h2.pageTitle.text-center 關於我們 About Us
     .ch.my-4
-      h5.text-center 首先感謝大家的關愛與支持!
+      h5 首先，感謝大家的關愛與支持!
       b-img.dog1(src= "../assets/about_dog1.png")
       p 在台灣有許多無法統計出來的大量的動物.有的被丟棄的.有的是虐待的.有的是不當飼養的.尤其是狗!有些地方因為文化的不同.把狗當成是家中的成員! 不幸地.在亞洲的很多地方.狗的遭遇是非常的悲慘.居住在很恐怖的環境. 隨時可以當垃圾處理掉!
       p 我的成長過程.沒有機會有著西方人的環境.會教導小孩學習如何去愛動物.如何尊重動物~~ 我長大以後卻是非常的怕狗! 直到15年前.我結婚了.我的先生帶了一隻黃金幼犬Chester.進入了我們的生活! 我到現在還記得我剛看到Chester的時候.瞪著眼睛看他.害怕的大叫又哭又鬧! 後來很特別的我開始照顧他.越來越與他相處就越黏合在一起。 第一年結婚紀念日.我們又歡迎了另外一隻狗Toby.加入了我們的家庭! 當我們去上班的時候,這樣二隻狗就可以互相作伴不會寂寞。
@@ -15,7 +15,7 @@ b-container#about
       p 我只是拋磚引玉開始了救援這條路. 期盼我不孤單.誠摯要請您們加入我的行列! 讓我們共同朝著救援更多極需要幫助的狗.依照他們個別的需求.教導它們.訓練它們進而喚起更多人給予他們應有的生存權!!
     b-img.dog2(src= "../assets/about_dog2.png")
     .eng.my-4
-      h5.text-center First, let me say “Thank You!” for all of your love and support.
+      h5 First, let me say “Thank You!” for all of your love and support.
       p In Taiwan, we have a huge population of homeless, abandoned, neglected, and abused animals, especially dogs. For some cultures, dogs are treated as family members. Unfortunately, in many Asian countries, dogs are often mistreated, left to fend for themselves in horrible conditions, and/or treated as disposable at any times. While growing up, I never had the chance to learn to love and respect animals like most Western families raised their children to do.  In fact, I grew up really fearful of dogs.
       p My fear only began to dissolve around 15 years ago, when I met my husband.  He brought a Golden puppy, Chester, into our lives. I still remember the first 5 months that I stared at Chester, screaming and crying out of fear. However, I often ended up being the one to take care of him and, as a result, my fear of Chester began to turn into love and our bond grew stronger with each passing day. At our first year anniversary, we welcomed another dog, Toby, into our lives so that the two dogs could keep each other company while we were at work.
       p A few years down the road, we decided to move into a house with a yard so that both dogs could have more room to play. As a result, I became aware of the huge number of stray animals, especially dogs, living homeless on the streets in the mountains near our home, begging for food. These stray dogs were not spayed or neutered and all lived in horrible conditions. Most were sick, injured, and/or abused.
@@ -35,6 +35,9 @@ b-container#about
   .pageTitle {
     color: $accent;
   }
+  h5 {
+    font-weight: 600;
+  }
   img {
     width: 200px;
     margin: 1rem 2rem;
@@ -49,8 +52,5 @@ b-container#about
   .dog3 {
     float: right;
   }
-}
-.pagetitle {
-    // margin: 2rem 0;
 }
 </style>
