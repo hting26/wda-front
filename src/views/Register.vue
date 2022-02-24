@@ -4,7 +4,7 @@
     b-row
       #regForm
         b-col(cols='12' md='6')
-          h3.text-center.mb-4.text-info 註冊 Register
+          h3.text-center.mb-4.text-accent 註冊 Register
           b-form(@submit.prevent="register")
             b-form-group(label='帳號 account' label-for='input-account' description='帳號長度為 4 到 20 個字' :state="state.account" invalid-feedback="帳號格式不正確")
               b-form-input#input-account(v-model="form.account" required placeholder='請輸入帳號' type='text' :state="state.account")
@@ -15,6 +15,7 @@
             .text-center
               b-btn.regbtn.mx-1(type='submit') 註冊
   b-img.loginImg(src="../assets/loginImg.png")
+  b-img.loginSm(src="../assets/loginSm.jpg")
 </template>
 
 <script>
@@ -69,8 +70,22 @@ export default {
 .regbtn{
   color: #fff;
 }
+.loginSm {
+  width: 100vw;
+  // display: block;
+}
 .loginImg {
   width: 100%;
+  min-width: 1440px;
+  display: none;
+}
+@media (min-width:576px) {
+  .loginSm {
+  display: none;
+  }
+  .loginImg {
+    display: flex;
+  }
 }
 @media (min-width:768px) {
   #regForm {

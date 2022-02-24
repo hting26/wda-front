@@ -4,7 +4,7 @@
     b-row
       #loginForm
         b-col(cols='12' md='6')
-          h3.text-center.mb-4.text-info 登入 Login
+          h3.text-center.mb-4.text-accent 登入 Login
           b-form(@submit.prevent="login")
             b-form-group(label='帳號 account' label-for='input-account' description='帳號長度為 4 到 20 個字' :state="state.account" invalid-feedback="帳號格式不正確")
               b-form-input#input-account(v-model="form.account" required placeholder='請輸入帳號' type='text' :state="state.account")
@@ -13,6 +13,7 @@
             .text-center
               b-btn.loginbtn.mx-1(type='submit') 登入
   b-img.loginImg(src="../assets/loginImg.png")
+  b-img.loginSm(src="../assets/loginSm.jpg")
 </template>
 
 <script>
@@ -42,14 +43,31 @@ export default {
 </script>
 
 <style lang="scss">
-#loginForm{
+#login {
+  // height: calc(100vh - 159px);
+  overflow: hidden;
+}
+#loginForm {
   width: 100%;
 }
-.loginbtn{
+.loginbtn {
   color: #fff;
 }
 .loginImg {
   width: 100%;
+  min-width: 1440px;
+  display: none;
+}
+.loginSm {
+  width: 100vw;
+}
+@media (min-width:576px) {
+  .loginSm {
+  display: none;
+  }
+  .loginImg {
+    display: flex;
+  }
 }
 @media (min-width:768px) {
   #loginForm {

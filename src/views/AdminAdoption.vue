@@ -32,7 +32,7 @@ export default {
       this.$swal({
         icon: 'error',
         title: '失敗',
-        text: '取得訂單失敗'
+        text: '取得表單失敗'
       })
     }
   }

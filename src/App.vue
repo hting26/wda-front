@@ -137,7 +137,7 @@ export default {
 }
 #footer {
   width: 100%;
-  min-height: 100px;
+  min-height: 120px;
   background-color: $primary;
   bottom: 0;
   position: relative;
