@@ -106,7 +106,14 @@ export default {
           title: '成功',
           text: '申請已送出'
         })
+        this.form = {
+          name: '',
+          phone: '',
+          description: '',
+          dog: ''
+        }
         this.$bvModal.hide('modal-apply' + this.dog._id)
+        this.modalSubmitting = false
       } catch (error) {
         this.$swal({
           icon: 'error',
@@ -127,7 +134,8 @@ export default {
       this.form = {
         name: '',
         phone: '',
-        description: ''
+        description: '',
+        dog: ''
       }
     }
   }

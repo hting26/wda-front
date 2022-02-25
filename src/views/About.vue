@@ -2,8 +2,8 @@
 b-container#about
     h2.pageTitle.text-center 關於我們 About Us
     .ch.my-4
-      h5 首先，感謝大家的關愛與支持!
       b-img.dog1(src= "../assets/about_dog1.png")
+      h5 首先，感謝大家的關愛與支持!
       p 在台灣有許多無法統計出來的大量的動物.有的被丟棄的.有的是虐待的.有的是不當飼養的.尤其是狗!有些地方因為文化的不同.把狗當成是家中的成員! 不幸地.在亞洲的很多地方.狗的遭遇是非常的悲慘.居住在很恐怖的環境. 隨時可以當垃圾處理掉!
       p 我的成長過程.沒有機會有著西方人的環境.會教導小孩學習如何去愛動物.如何尊重動物~~ 我長大以後卻是非常的怕狗! 直到15年前.我結婚了.我的先生帶了一隻黃金幼犬Chester.進入了我們的生活! 我到現在還記得我剛看到Chester的時候.瞪著眼睛看他.害怕的大叫又哭又鬧! 後來很特別的我開始照顧他.越來越與他相處就越黏合在一起。 第一年結婚紀念日.我們又歡迎了另外一隻狗Toby.加入了我們的家庭! 當我們去上班的時候,這樣二隻狗就可以互相作伴不會寂寞。
       p 過了幾年.我們決定要搬到有庭院的新家.讓它們更有空間可以運動! 因為這個新家是在山區.卻讓我看到很多流浪的動物.尤其是狗!! 在山上的馬路上流浪乞求過路人給食物!
@@ -30,24 +30,23 @@ b-container#about
 <style lang="scss">
 #about {
   position: relative;
-  // display: flex;
   color: $dark2;
   .pageTitle {
     color: $accent;
+    margin-bottom: 3rem;
   }
   h5 {
     font-weight: 600;
   }
   img {
     width: 200px;
-    margin: 1rem 2rem;
+    margin: 2rem;
   }
   .dog1 {
     float: right;
   }
   .dog2 {
     width: 280px;
-    // float: right;
   }
   .dog3 {
     float: right;
