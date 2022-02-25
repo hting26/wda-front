@@ -36,11 +36,11 @@ b-container#happytail
     object-fit: cover;
   }
   @media (min-width:768px) {
-  .carousel-item img {
-    height: 500px;
-    overflow: hidden;
-    object-fit: cover;
+    .carousel-item img {
+      height: 500px;
+      overflow: hidden;
+      object-fit: cover;
+    }
   }
-}
 }
 </style>

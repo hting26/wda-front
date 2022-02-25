@@ -12,7 +12,7 @@ export default {
     return {
       adoptions: [],
       fields: [
-        { key: 'dog', label: '領養犬名' },
+        { key: 'dog.name', label: '領養犬名' },
         { key: 'date', label: '日期' },
         { key: '_id', label: '申請編號' }
       ]

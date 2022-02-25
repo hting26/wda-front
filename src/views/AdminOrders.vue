@@ -1,6 +1,6 @@
 <template lang="pug">
 #adminorders
-  b-table(:items="orders" :fields='fields')
+  b-table.text-center(:items="orders" :fields='fields')
     template(#cell(user)='data')
       | {{ data.item.user.account}}
     template(#cell(date)='data')

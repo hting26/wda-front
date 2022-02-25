@@ -1,23 +1,38 @@
 <template lang="pug">
 b-container#adminadoptions
-  b-table(:items="adoptions" :fields='fields')
+  b-table.text-center(:items="adoptions" :fields='fields' striped borderless )
     template(#cell(user)='data')
       | {{ data.item.user.account}}
     template(#cell(date)='data')
       | {{ new Date(data.item.date).toLocaleString('zh-tw') }}
+    template(#cell(action)='data')
+      b-btn(@click='moreBtn(data.index)') 查看
+  b-modal#modal()
+    | {{ adoptions }}
 </template>
 
 <script>
 export default {
   data () {
     return {
+      form: {},
       adoptions: [],
       fields: [
-        { key: 'user', label: '申請者' },
-        { key: 'dog', label: '領養犬名' },
-        { key: 'date', label: '日期' },
-        { key: '_id', label: '申請編號' }
+        { key: 'dog.name', label: '領養犬名', sortable: true, class: 'td' },
+        { key: 'name', label: '申請人姓名', class: 'td' },
+        { key: 'user', label: '申請帳號', class: 'td' },
+        { key: 'phone', label: '聯絡電話', class: 'td' },
+        { key: 'description', label: '說明', class: 'td pp' },
+        { key: 'date', label: '日期', sortable: true, class: 'td' },
+        { key: '_id', label: '申請編號', class: 'td' },
+        { key: 'action', label: '', class: 'td' }
       ]
+    }
+  },
+  methods: {
+    moreBtn (index) {
+      this.modal = { ...this.adoptions[index] }
+      this.$bvModal.show('modal')
     }
   },
   async created () {
@@ -38,3 +53,11 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+  .td {
+    max-width: 200px;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  </style>
