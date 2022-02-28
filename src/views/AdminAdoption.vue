@@ -6,9 +6,11 @@ b-container#adminadoptions
     template(#cell(date)='data')
       | {{ new Date(data.item.date).toLocaleString('zh-tw') }}
     template(#cell(action)='data')
-      b-btn(@click='moreBtn(data.index)') 查看
-  b-modal#modal()
-    | {{ adoptions }}
+      b-btn(@click='moreBtn') 查看
+  b-modal(
+    :id="'modal' + value._id"
+    v-for='(value, index) in adoptions')
+    | {{ value }}
 </template>
 
 <script>
@@ -30,9 +32,9 @@ export default {
     }
   },
   methods: {
-    moreBtn (index) {
-      this.modal = { ...this.adoptions[index] }
-      this.$bvModal.show('modal')
+    moreBtn () {
+      // this.modal = { ...this.adoptions[index] }
+      this.$bvModal.show('modal' + this._id)
     }
   },
   async created () {
