@@ -77,10 +77,10 @@ export default {
 }
 .navbar-nav {
   .nav-link {
-    color: $accent;
+    color: $accent !important;
 
     @include hover-focus() {
-      color: $daccent;
+      color: $daccent!important;
     }
 
     &.disabled {
