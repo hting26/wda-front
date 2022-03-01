@@ -73,6 +73,20 @@ export default {
   z-index: 999;
   box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.1);
   text-align: center;
+  color: $accent;
+}
+.navbar-nav {
+  .nav-link {
+    color: $accent;
+
+    @include hover-focus() {
+      color: $daccent;
+    }
+
+    &.disabled {
+      color: $navbar-light-disabled-color;
+    }
+  }
 }
 #logo {
   width: 30px;
