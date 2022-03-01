@@ -66,6 +66,12 @@ export default {
   background-color: $accent;
   color: white;
 }
+a.nav-link {
+  color: $accent;
+  @include hover-focus() {
+      color: $daccent!important;
+    }
+}
 .navbar {
   position: fixed;
   top: 0;
@@ -74,19 +80,6 @@ export default {
   box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.1);
   text-align: center;
   color: $accent;
-}
-.navbar-nav {
-  .nav-link {
-    color: $accent !important;
-
-    @include hover-focus() {
-      color: $daccent!important;
-    }
-
-    &.disabled {
-      color: $navbar-light-disabled-color;
-    }
-  }
 }
 #logo {
   width: 30px;
