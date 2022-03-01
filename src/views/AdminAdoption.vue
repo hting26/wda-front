@@ -47,12 +47,14 @@ export default {
       const thisId = this.adoptions[index]._id
       this.$bvModal.show('modal' + thisId)
     },
-    async deleteAdoptionById (index) {
+    deleteCheck (index) {
       this.$swal({
         icon: 'warning',
         title: '確認刪除?',
         showCancelButton: true
       })
+    },
+    async deleteAdoptionById (index) {
       try {
         await this.api.delete('/adoptions/' + this.adoptions[index]._id,
           {

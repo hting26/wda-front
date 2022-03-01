@@ -66,11 +66,8 @@ export default {
   background-color: $accent;
   color: white;
 }
-a.nav-link {
+.navbar-light .navbar-nav .nav-link {
   color: $accent;
-  @include hover-focus() {
-      color: $daccent!important;
-    }
 }
 .navbar {
   position: fixed;
