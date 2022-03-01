@@ -23,6 +23,11 @@ Vue.mixin(mixin)
 
 Vue.config.productionTip = false
 
+// 換頁時滾動置頂
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0)
+})
+
 new Vue({
   router,
   store,

@@ -1,6 +1,6 @@
 <template lang="pug">
 b-container#orders
-  b-table(:items="orders" :fields='fields')
+  b-table.text-center(:items="orders" :fields='fields' striped borderless)
     template(#cell(date)='data')
       | {{ new Date(data.item.date).toLocaleString('zh-tw') }}
     template(#cell(products)='data')

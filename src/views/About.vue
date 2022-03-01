@@ -1,6 +1,6 @@
 <template lang="pug">
 b-container#about
-  h2.pageTitle.text-center 關於我們 About Us
+  h3.pageTitle.text-center 關於我們 About Us
   .fiximg
   .ch.my-4
     b-img.dog1(src= "../assets/about_dog1.png")

@@ -1,6 +1,6 @@
 <template lang="pug">
 b-container#happytail
-  h2.pageTitle.text-center 快樂時光 Happy Tail
+  h3.pageTitle.text-center 快樂時光 Happy Tail
   b-row
     b-col(cols='12' md='6')
       b-carousel#carousel(controls :interval="4000")
