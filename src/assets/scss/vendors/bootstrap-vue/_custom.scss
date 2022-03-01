@@ -53,7 +53,9 @@ $theme-colors: () !default;
 // variant 新增變數名
 $theme-colors: map-merge(
   (
-    'accent': $accent
+    'accent': $accent,
+    'daccent': $daccent,
+    'dark2': $dark2
   ),
   $theme-colors
 );

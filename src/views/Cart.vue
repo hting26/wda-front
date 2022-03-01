@@ -16,7 +16,7 @@
       template(#cell(action)='data')
         b-form-spinbutton(v-model='data.item.quantity' min="1" inline @input='updateCart(data.index, data.item.quantity)')
         | &emsp;
-        b-icon.trashbtn.ml-2(icon='trash' variant='danger' @click='updateCart(data.index, 0)') X
+        b-icon.trashbtn.ml-2(icon='trash' variant='danger' @click='updateCart(data.index, 0)')
     p.text-center 總金額 {{ total }}
     b-btn.checkbtn(size="lg" variant='accent' @click='checkout' :disabled='products.length === 0') 結帳
 </template>
