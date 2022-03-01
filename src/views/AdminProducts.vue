@@ -1,7 +1,7 @@
 <template lang="pug">
 #AdminProduct
   b-btn.addbtn.my-3(v-b-modal.modal-product variant='accent') 新增商品
-  b-table.text-center(:items="products" :fields='fields' ref='table')
+  b-table.text-center(:items="products" :fields='fields' ref='table' striped borderless)
     template(#cell(image)='data')
       img(v-if='data.item.image' :src='data.item.image' style='height: 50px')
     template(#cell(sell)='data')

@@ -1,7 +1,7 @@
 <template lang="pug">
 #AdminDogs
   b-btn.addbtn.my-3(v-b-modal.modal-dog variant='accent') 新增
-  b-table.text-center(:items="dogs" :fields='fields' ref='table')
+  b-table.text-center(:items="dogs" :fields='fields' ref='table' striped borderless)
     template(#cell(image)='data')
       img(v-if='data.item.image' :src='data.item.image' style='height: 50px')
     template.text-truncate(#cell(description)='data')

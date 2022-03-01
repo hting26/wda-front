@@ -9,7 +9,7 @@ b-container#adminadoptions
       b-btn(@click='moreBtn(data.index)') 查看
   b-modal(
     :id="'modal' + value._id"
-    v-for='(value, index) in adoptions')
+    v-for='value in adoptions')
     | {{ value }}
 </template>
 
@@ -32,10 +32,9 @@ export default {
     }
   },
   methods: {
-    moreBtn (data, index) {
-      // this.modal = { ...this.adoptions[index] }
-      this._id = data.index
-      this.$bvModal.show('modal' + this._id)
+    moreBtn (index) {
+      const thisId = this.adoptions[index]._id
+      this.$bvModal.show('modal' + thisId)
     }
   },
   async created () {
