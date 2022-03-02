@@ -31,7 +31,6 @@ b-card.dogCard(img-top :img-src='dog.image')
       label='連絡電話'
       label-for='input-phone'
       description='必填欄位'
-      invalid-feedback='連絡電話必填'
       :state='state.phone'
     )
       b-form-input#input-phone(
@@ -50,6 +49,7 @@ b-card.dogCard(img-top :img-src='dog.image')
         v-model='form.description'
         rows="6"
         required
+        placeholder='請介紹一下自己並詳細說明欲領養的動機'
       )
 </template>
 
@@ -146,8 +146,7 @@ export default {
 <style lang="scss">
 .dogCard {
   border: none;
-  background-color: rgb(248, 244, 239);
-  // width: 190px;
+  box-shadow: 0px 5px 15px rgb(223, 223, 223);
   .card-title {
     color: $dark2;
     font-size: 18px;
@@ -155,7 +154,6 @@ export default {
     text-decoration: none;
   }
   .card-img-top {
-    // max-height: 550px;
     object-fit: contain;
   }
   .card-text {
@@ -164,7 +162,6 @@ export default {
   }
   .btn{
     color: $dark2;
-    // font-weight: 600;
     font-size: 17px;
   }
 }

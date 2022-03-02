@@ -56,17 +56,12 @@ b-container#about
     display: inline-block;
     position: relative;
     background: url('../assets/pexels-jozef-fehér-1633522.jpg')no-repeat;
-    background-position: 25% 50%;
+    background-position: calc(0% + 1vw) calc(20% + 1vw);
     background-size: contain;
     width: 100%;
-    height: 200px;
+    height: calc(200px + 10vw);
     background-attachment: fixed;
   }
-  @media (min-width:768px) {
-  .fiximg {
-    height: 400px;
-  }
-}
 }
 
 </style>

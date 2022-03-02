@@ -14,7 +14,6 @@ b-container#adminadoptions
     hide-footer
     :id="'modal' + value._id"
     v-for='value in adoptions'
-    body-text-variant="dark2"
     )
     h6 領養犬名: {{ value.dog.name }}
     h6 申請人姓名: {{ value.name }}

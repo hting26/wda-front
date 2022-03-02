@@ -1,6 +1,6 @@
 <template lang="pug">
 b-container#volunteer
-  h3.pageTitle.text-center 招募志工
+  h3.pageTitle.text-center 招募志工 Volunteer
   b-icon(icon='caret-down', v-b-toggle.collapse-3 variant='accent')
   b-collapse#collapse-3(visible)
     .pageText 誠徵義工!!我們需要您的幫忙!如果你願意當義工幫忙流浪狗.
