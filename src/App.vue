@@ -30,12 +30,12 @@
     img.fixImg(src="./assets/fiximg.png")
   router-view
   #footer
-    //- div
-    //-   |社團法人台灣瑪莉愛狗協會
-    //-   |台內團字號第1101363666號
+    div
+      |社團法人台灣瑪莉愛狗協會
+      |台內團字號第1101363666號
     div
       |泰山職訓局學員作品
-      |僅供學習用途
+      |此網站僅為練習用途
 </template>
 <script>
 export default {

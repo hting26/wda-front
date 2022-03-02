@@ -152,6 +152,7 @@ export default {
   }
   .col {
     margin: auto 0;
+    background: none;
   }
 }
 @media (min-width:768px) {

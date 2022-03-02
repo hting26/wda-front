@@ -62,7 +62,8 @@ export default {
         name: '',
         phone: '',
         description: '',
-        dog: ''
+        dog: '',
+        status: '已送出'
       },
       modalSubmitting: false
     }

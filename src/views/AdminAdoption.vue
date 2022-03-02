@@ -14,20 +14,35 @@ b-container#adminadoptions
     hide-footer
     :id="'modal' + value._id"
     v-for='value in adoptions'
-    body-text-variant="daccent")
-    h6 領養犬名 {{ value.dog.name }}
-    h6 申請人姓名 {{ value.name }}
-    h6 申請帳號 {{ value.user.account }}
-    h6 聯絡電話 {{ value.phone }}
-    h6 說明 {{ value.description }}
-    h6 申請日期 {{ new Date(value.date).toLocaleString('zh-tw') }}
-    h6 申請編號 {{ value._id }}
+    body-text-variant="dark2"
+    )
+    h6 領養犬名: {{ value.dog.name }}
+    h6 申請人姓名: {{ value.name }}
+    h6 申請帳號: {{ value.user.account }}
+    h6 聯絡電話: {{ value.phone }}
+    h6 說明: {{ value.description }}
+    h6 申請日期: {{ new Date(value.date).toLocaleString('zh-tw') }}
+    h6 申請編號: {{ value._id }}
+    b-form-group(
+      label='狀態'
+      label-for='input-status'
+    )
+      b-form-input#input-status(
+        v-model='value.status'
+        type='text'
+        required
+      )
+      b-btn(@click='editAdoptionById(data.index)')
+        b-icon(icon='pen')
+        |更改
 </template>
 
 <script>
 export default {
   data () {
     return {
+      idx: '',
+      input: '',
       form: {},
       adoptions: [],
       fields: [
@@ -53,6 +68,24 @@ export default {
         title: '確認刪除?',
         showCancelButton: true
       })
+    },
+    async editAdoptionById (index) {
+      try {
+        await this.api.patch('/adoptions/' + this.adoptions[index]._id,
+          { status: this.adoptions[index].status },
+          {
+            headers: {
+              authorization: 'Bearer ' + this.user.token
+            }
+          }
+        )
+      } catch (error) {
+        this.$swal({
+          icon: 'error',
+          title: '失敗',
+          text: '修改狀態失敗'
+        })
+      }
     },
     async deleteAdoptionById (index) {
       try {
@@ -99,10 +132,6 @@ export default {
     overflow:hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-  }
-  .modal-body {
-    color: rgb(255, 0, 0);
-    padding: 3rem;
   }
   .trashbtn {
     cursor: pointer;

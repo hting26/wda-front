@@ -42,7 +42,7 @@
   padding: 4rem 2rem;
   border-radius: 4rem;
   border: .8rem solid $secondary;
-  background-color: $primary;
+  // background-color: $primary;
   text-align: left;
   margin: 0 .5rem;
 }
