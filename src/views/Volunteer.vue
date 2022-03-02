@@ -76,7 +76,7 @@ b-container#volunteer
     margin: auto;
   }
   .card-img {
-    transition: .3s;
+    transition: .5s;
   }
   .card-img:hover {
     transform: scale(1.02);

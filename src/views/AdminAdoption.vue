@@ -7,7 +7,7 @@ b-container#adminadoptions
       | {{ new Date(data.item.date).toLocaleString('zh-tw') }}
     template(#cell(action)='data')
       b-btn(@click='moreBtn(data.index)') 查看
-      b-icon.trashbtn.ml-2(icon='trash' variant='danger' @click='deleteAdoptionById(data.index)')
+      b-icon.trashbtn.ml-4(icon='trash' variant='danger' @click='deleteAdoptionById(data.index)')
   b-modal.modal(
     title="領養申請資料"
     centered

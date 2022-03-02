@@ -2,7 +2,7 @@
 #cart.text-center
   b-container
     h3.pageTitle 物資籃 Donate Cart
-    b-table.mt-5(:items='products' :fields='fields' :tbody-tr-class="rowClass" show-empty)
+    b-table.mt-5(:items='products' :fields='fields' :tbody-tr-class="rowClass" show-empty striped borderless)
       template(#empty)
         div.my-5
           p 物資籃目前沒有商品
@@ -17,7 +17,17 @@
         b-form-spinbutton(v-model='data.item.quantity' min="1" inline @input='updateCart(data.index, data.item.quantity)')
         | &emsp;
         b-icon.trashbtn.ml-2(icon='trash' variant='danger' @click='updateCart(data.index, 0)')
-    p.text-center 總金額 {{ total }}
+    #checkOut
+      b-col.col(cols='12' md='6')
+        h3.text-center.mb-4.text-accent 結帳
+        b-form
+          b-form-group(label='姓名' label-for='name')
+            b-form-input#name(v-model="form.name" required placeholder='請輸入姓名' type='text' )
+          b-form-group(label='電話' label-for='phone')
+            b-form-input#phone(v-model="form.phone" required placeholder='請輸入電話' type='text')
+          b-form-group(label='匯款資料' label-for='info')
+            b-form-input#info(v-model="form.info" required placeholder='請輸入匯款資料' type='text')
+    h5.text-center 總金額 {{ total }}
     b-btn.checkbtn(size="lg" variant='accent' @click='checkout' :disabled='products.length === 0') 結帳
 </template>
 
@@ -25,6 +35,11 @@
 export default {
   data () {
     return {
+      form: {
+        name: '',
+        phone: '',
+        info: ''
+      },
       products: [],
       fields: [
         { key: 'image', label: '圖片' },
@@ -59,7 +74,7 @@ export default {
     },
     async checkout () {
       try {
-        await this.api.post('/orders', {}, {
+        await this.api.post('/orders', this.form, {
           headers: {
             authorization: 'Bearer ' + this.user.token
           }
@@ -125,10 +140,24 @@ export default {
   }
   .checkbtn {
     color: #fff;
+    margin: 1rem 0;
   }
   .trashbtn {
     cursor: pointer;
     font-size: 1.5rem;
+  }
+  #checkOut {
+    margin: 2rem 0;
+    width: 100%;
+  }
+  .col {
+    margin: auto 0;
+  }
+}
+@media (min-width:768px) {
+  #checkOut {
+  display: flex;
+  justify-content: center;
   }
 }
 </style>

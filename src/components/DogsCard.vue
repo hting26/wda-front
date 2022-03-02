@@ -1,5 +1,5 @@
 <template lang="pug">
-b-card.card-adoption(img-top :img-src='dog.image')
+b-card.dogCard(img-top :img-src='dog.image')
   b-card-body
     b-card-title {{ dog.name }}
     b-card-text(style='white-space: pre-line') {{ dog.description }}
@@ -143,7 +143,7 @@ export default {
 </script>
 
 <style lang="scss">
-.card-adoption {
+.dogCard {
   border: none;
   background-color: rgb(248, 244, 239);
   // width: 190px;

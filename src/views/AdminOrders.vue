@@ -19,7 +19,10 @@ export default {
         { key: '_id', label: '單號' },
         { key: 'user', label: '使用者' },
         { key: 'date', label: '日期' },
-        { key: 'products', label: '商品' }
+        { key: 'products', label: '商品' },
+        { key: 'name', label: '姓名' },
+        { key: 'phone', label: '電話' },
+        { key: 'info', label: '匯款資料' }
       ]
     }
   },
