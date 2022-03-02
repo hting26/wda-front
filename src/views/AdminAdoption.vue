@@ -15,13 +15,20 @@ b-container#adminadoptions
     :id="'modal' + value._id"
     v-for='value in adoptions'
     )
-    h6 領養犬名: {{ value.dog.name }}
-    h6 申請人姓名: {{ value.name }}
-    h6 申請帳號: {{ value.user.account }}
-    h6 聯絡電話: {{ value.phone }}
-    h6 說明: {{ value.description }}
-    h6 申請日期: {{ new Date(value.date).toLocaleString('zh-tw') }}
-    h6 申請編號: {{ value._id }}
+    h6 領養犬名:
+    p {{ value.dog.name }}
+    h6 申請人姓名:
+    p {{ value.name }}
+    h6 申請帳號:
+    p {{ value.user.account }}
+    h6 聯絡電話:
+    p {{ value.phone }}
+    h6 說明:
+    p {{ value.description }}
+    h6 申請日期:
+    p {{ new Date(value.date).toLocaleString('zh-tw') }}
+    h6 申請編號:
+    p {{ value._id }}
     b-form-group(
       label='狀態'
       label-for='input-status'

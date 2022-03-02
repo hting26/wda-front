@@ -3,7 +3,7 @@
   b-container
     b-row
       b-table-simple
-        b-tr 帳號
+        b-tr {{ data }}
           b-td 帳號
         b-tr 帳號
           b-td 帳號
@@ -11,6 +11,31 @@
           b-td 帳號
 </template>
 
+<script>
+export default {
+  data () {
+    return {
+      users: []
+    }
+  },
+  async created () {
+    try {
+      const { data } = await this.api.get('/users/me', {
+        headers: {
+          authorization: 'Bearer ' + this.user.token
+        }
+      })
+      this.users = data.result
+    } catch (error) {
+      this.$swal({
+        icon: 'error',
+        title: '失敗',
+        text: '取得失敗'
+      })
+    }
+  }
+}
+</script>
 <style lang="scss">
 .col{
   background-color: rgb(215, 250, 218);

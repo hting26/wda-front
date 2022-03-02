@@ -13,7 +13,7 @@
           div(v-if="value.hover === false") {{ value.eng }}
           div(v-else) {{ value.ch }}
       b-navbar-nav.ml-auto
-        b-nav-item(v-if="user.isLogin && !user.isAdmin" to='/member/data') Member
+        b-nav-item(v-if="user.isLogin && !user.isAdmin" to='/member/orders') 會員
         b-nav-item(v-if="user.isLogin && user.isAdmin" to='/admin/products') 管理
         b-nav-item(to='/cart')|Donate Cart
           //- b-icon.ml-1(icon='heart' font-scale="0.9")
@@ -32,10 +32,9 @@
   #footer
     div
       |社團法人台灣瑪莉愛狗協會
-      |台內團字號第1101363666號
+      |台內團字號第XXXXXXXX號
     div
-      |泰山職訓局學員作品
-      |此網站僅為練習用途
+      |此網站僅為學生練習用途
 </template>
 <script>
 export default {

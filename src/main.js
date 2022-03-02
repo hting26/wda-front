@@ -12,6 +12,11 @@ import mixin from './mixin.js'
 import ImgInputer from 'vue-img-inputer'
 import 'vue-img-inputer/dist/index.css'
 import VueGtag from 'vue-gtag'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+// import style
+import 'swiper/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper)
 
 Vue.use(VueGtag, {
   config: { id: 'G-QPEM5T3798' }
