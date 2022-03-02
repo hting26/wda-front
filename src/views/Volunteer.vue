@@ -3,13 +3,13 @@ b-container#volunteer
   h3.pageTitle.text-center 招募志工
   b-icon(icon='caret-down', v-b-toggle.collapse-3 variant='accent')
   b-collapse#collapse-3(visible)
-    .pageText 誠徵義工!!我們需要您的幫忙!如果你願意當義工幫忙流浪狗.請與我聯絡!
-
+    .pageText 誠徵義工!!我們需要您的幫忙!如果你願意當義工幫忙流浪狗.
+      a.href(href='https://www.facebook.com/marysdoggies/') 請與我聯絡!
   b-card.overflow-hidden(no-body)
     b-row(no-gutters)
       b-col(lg='6')
         b-card-img.rounded-0(src='../assets/Volunteer1.png' alt='Image')
-      b-col(lg='6')
+      b-col.vertical-align(lg='6')
         b-card-body(title='FLIGHT GUARDIAN / 護犬大使')
             b-card-text(v-b-tooltip.hover.right="'Every month we need flight guardians to help fly our rescued dogs to their loving forever homes abroad in San Francisco, Los Angeles, Seattle in United States and Vancouver and Toronto in Canada. We will take care of all the necessary paperwork. Our volunteers and adopting families abroad will be at the airport to meet you and the doggies on arrival at the airport. The process is very simple! All we will need from you is your passport copy and itinerary in order for us to process the dogs’ paperwork. All expenses will be taken care by us. Please help us so the doggies can have a chance to be in a loving home and we have space to rescue another dog in desperate need.'"
             variant='danger')
@@ -18,7 +18,7 @@ b-container#volunteer
     b-row(no-gutters)
       b-col.smImg(lg='6')
         b-card-img.rounded-0(src='../assets/Volunteer2.png' alt='Image')
-      b-col(lg='6')
+      b-col.vertical-align(lg='6')
         b-card-body(title='VOLUNTEER / 日常志工')
             b-card-text(v-b-tooltip.hover.right="'We welcome you to volunteer your spare time to help our doggies while we get them ready for their forever homes. Any help is welcome like walking, bathing, playing or just sitting quietly next to them. We also need help with transporting them to the vets for checkups and helping at the airport before they fly to their forever homes.'"
             variant='danger')
@@ -29,7 +29,7 @@ b-container#volunteer
     b-row(no-gutters)
       b-col(lg='6')
         b-card-img.rounded-0(src='../assets/Volunteer3.png' alt='Image')
-      b-col(lg='6')
+      b-col.vertical-align(lg='6')
         b-card-body(title='FOSTER HOMES / 中途協助')
             b-card-text(v-b-tooltip.hover.right="'We are constantly very full and overwhelmed with the number of homeless dogs needing a safe place to be until we have space to bring them home and get them ready for their homes. If you would like to be a foster family, we prefer that you have some basic knowledge with dogs so that you can assist and train them during their rehabilitation period. We don’t want to give up the chance of rescuing any dogs because our home is full. Therefore, being a foster family you will be helping us and the doggies in a huge and rewarding way.'"
             variant='danger')
@@ -42,6 +42,7 @@ b-container#volunteer
 <style lang="scss">
 #volunteer {
   text-align: center;
+  color: $dark2;
   .pageTitle {
     color: $accent;
   }
@@ -57,6 +58,10 @@ b-container#volunteer
       outline: none;
     }
   }
+  .href {
+    color: $accent;
+    text-decoration: none;
+  }
   .card {
     margin-bottom: 3rem;
   }
@@ -67,9 +72,15 @@ b-container#volunteer
     font-weight: 600;
     text-decoration: none;
   }
-  // .card-img-top {
-  //   object-fit: contain;
-  // }
+  .vertical-align {
+    margin: auto;
+  }
+  .card-img {
+    transition: .3s;
+  }
+  .card-img:hover {
+    transform: scale(1.02);
+  }
   .card-text {
     font-size: 17px;
     text-align: left;
@@ -88,6 +99,9 @@ b-container#volunteer
     .smImg {
     display: none;
     }
+  .card-img {
+    height: 354px;
+  }
   }
 }
 </style>
