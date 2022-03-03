@@ -7,7 +7,7 @@ b-container#donate
   b-row.mt-5
     b-col.my-2(cols='12' sm='6' lg='3' v-for='product in products' :key='product._id')
       ProductCard(:product='product')
-  h3.pageTitle.my-3 我要捐款 Donate
+  h3.pageTitle.my-3#donatemoney 我要捐款 Donatem
   a.href(href='https://www.facebook.com/marysdoggies/').pageText 感謝您的愛心，請點此線上捐款:)
   template
     swiper.swiper(:options='swiperOption')
