@@ -9,20 +9,20 @@ b-container#donate
       ProductCard(:product='product')
   //- h3.pageTitle.my-3#donatemoney 我要捐款 Donate
   //- a.href(href='https://www.facebook.com/marysdoggies/').pageText 感謝您的愛心，請點此線上捐款:)
-  template
-    swiper.swiper(:options='swiperOption')
-      swiper-slide
-        img(src='../assets/vo1.png')
-      swiper-slide
-        img(src='../assets/vo2.png')
-      swiper-slide
-        img(src='../assets/vo3.png')
-      swiper-slide
-        img(src='../assets/vo4.png')
-      swiper-slide
-        img(src='../assets/vo5.png')
-      .swiper-button-prev(slot='button-prev')
-      .swiper-button-next(slot='button-next')
+  //- template
+  //-   swiper.swiper(:options='swiperOption')
+  //-     swiper-slide
+  //-       img(src='../assets/vo1.png')
+  //-     swiper-slide
+  //-       img(src='../assets/vo2.png')
+  //-     swiper-slide
+  //-       img(src='../assets/vo3.png')
+  //-     swiper-slide
+  //-       img(src='../assets/vo4.png')
+  //-     swiper-slide
+  //-       img(src='../assets/vo5.png')
+  //-     .swiper-button-prev(slot='button-prev')
+  //-     .swiper-button-next(slot='button-next')
 </template>
 
 <script>
