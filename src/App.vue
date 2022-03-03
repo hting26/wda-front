@@ -68,7 +68,7 @@ export default {
 .navbar-light .navbar-nav .nav-link {
   color: $accent;
   &:hover {
-    $daccent
+    color: $daccent;
   }
 }
 .navbar {
