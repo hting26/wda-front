@@ -9,7 +9,7 @@
     template(#cell(action)='data')
       b-btn(@click='editProduct(data.index)') 編輯
   b-modal#modal-product(
-    size="lg"
+    size="md"
     :title="form._id.length > 0 ? '編輯商品' : '新增商品'"
     centered
     ok-variant='success'
@@ -85,7 +85,7 @@
       accept="image/*"
       v-model="form.image"
       theme="light"
-      size="small"
+      style="width: 100%"
       bottom-text="點選或拖曳圖片以修改"
       hover-text="點選或拖曳圖片以修改"
       placeholder="點選或拖曳選擇圖片"

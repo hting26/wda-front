@@ -11,7 +11,7 @@
     template(#cell(action)='data')
       b-btn(@click='editDog(data.index)') 編輯
   b-modal#modal-dog(
-    size="lg"
+    size="md"
     :title="form._id.length > 0 ? '編輯' : '新增'"
     centered
     ok-variant='success'
@@ -57,7 +57,7 @@
       accept="image/*"
       v-model="form.image"
       theme="light"
-      size="mediun"
+      style="width: 100%"
       bottom-text="點選或拖曳圖片以修改"
       hover-text="點選或拖曳圖片以修改"
       placeholder="點選或拖曳選擇圖片"
