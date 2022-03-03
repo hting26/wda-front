@@ -7,18 +7,62 @@ b-container#donate
   b-row.mt-5
     b-col.my-2(cols='12' sm='6' lg='3' v-for='product in products' :key='product._id')
       ProductCard(:product='product')
+  h3.pageTitle.my-3 我要捐款 Donate
+  a.href(href='https://www.facebook.com/marysdoggies/').pageText 感謝您的愛心，請點此線上捐款:)
+  template
+    swiper.swiper(:options='swiperOption')
+      swiper-slide
+        img(src='../assets/vo1.png')
+      swiper-slide
+        img(src='../assets/vo2.png')
+      swiper-slide
+        img(src='../assets/vo3.png')
+      swiper-slide
+        img(src='../assets/vo4.png')
+      swiper-slide
+        img(src='../assets/vo5.png')
+      .swiper-button-prev(slot='button-prev')
+      .swiper-button-next(slot='button-next')
 </template>
 
 <script>
 import ProductCard from '../components/ProductCard.vue'
-
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
 export default {
   components: {
-    ProductCard
+    ProductCard,
+    Swiper,
+    SwiperSlide
+  },
+  directives: {
+    swiper: directive
   },
   data () {
     return {
-      products: []
+      products: [],
+      swiperOption: {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+          clickable: true
+        },
+        loop: true,
+        autoplay: {
+          delay: 4000,
+          disableOninteraction: false
+        },
+        breakpoints: {
+          1200: {
+            slidesPerView: 3
+          },
+          768: {
+            slidesPerView: 2
+          }
+        }
+      }
     }
   },
   async created () {
@@ -51,6 +95,20 @@ export default {
     &:focus {
       outline: none;
     }
+  }
+  a {
+    text-decoration: none;
+  }
+  .swiper {
+    margin: 3rem 0;
+  }
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: white;
   }
 }
 </style>

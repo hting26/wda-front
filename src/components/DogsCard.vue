@@ -147,6 +147,10 @@ export default {
 .dogCard {
   border: none;
   box-shadow: 0px 5px 15px rgb(223, 223, 223);
+  transition: .5s;
+    &:hover {
+    transform: scale(1.015);
+  }
   .card-title {
     color: $dark2;
     font-size: 18px;

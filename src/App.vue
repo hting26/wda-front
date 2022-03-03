@@ -43,7 +43,7 @@ export default {
       hoverData: [
         { eng: 'About', ch: '關於我們', hover: false, to: '/about' },
         { eng: 'Happy Tail', ch: '快樂時光', hover: false, to: '/happytail' },
-        { eng: 'Donate', ch: '物資募集', hover: false, to: '/donate', class: 'b-dropdown' },
+        { eng: 'Donate', ch: '愛心捐贈', hover: false, to: '/donate', class: 'b-dropdown' },
         { eng: 'Volunteer', ch: '招募志工', hover: false, to: '/volunteer' },
         { eng: 'Adoption', ch: '我要領養', hover: false, to: '/adoption' }
       ]
