@@ -62,6 +62,8 @@
 .text {
   margin: 1rem 0 auto;
   color: $dark2;
+  line-height: 2.2rem;
+  font-size: 1.4rem;
 }
 .rescueImg {
   // margin: 5rem 0 auto;
