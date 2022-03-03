@@ -24,9 +24,9 @@
           //- b-icon(icon='person-fill')
         b-nav-item(v-if="user.isLogin" @click="logout")|Logout
   div.fakenav
-  a.fix(href='#/donate/#donatemoney')
+  a.fix(href='#/donate')
     .fixText| Donate<br>Today!
-      .ch 我要捐款
+      .ch 我要捐贈
     img.fixImg(src="./assets/fiximg.png")
   router-view
   #footer
