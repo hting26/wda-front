@@ -1,9 +1,23 @@
 <template lang="pug">
-b-card.dogCard(img-top :img-src='dog.image')
-  b-card-body
-    b-card-title {{ dog.name }}
-    b-card-text(style='white-space: pre-line') {{ dog.description }}
-    b-btn(@click='apply') 申請領養
+#dogscard
+  b-card.dogCard(img-top :img-src='dog.image')
+    b-card-body(@click='more')
+      b-card-title {{ dog.name }}
+      b-card-text(style='white-space: pre-line') {{ dog.description }}
+    b-card-footer
+      b-btn.mx-2(@click='more') 閱讀更多
+      b-btn.applyBtn.mx-2(@click='apply') 申請領養
+  b-modal.modalMore(
+    :id="'modal-more'+ dog._id"
+    hide-footer
+    scrollable
+    :title="dog.name"
+    text-center
+    no-stacking
+  )
+    img.moreImg(:src='dog.image' style='width: 100%;')
+    p(style="white-space: pre-line; margin:2rem 0;") {{ dog.description }}
+    b-btn.applyBtn(@click='apply'  style='') 申請領養
   b-modal(
     title="申請領養"
     @ok="submitApply"
@@ -11,6 +25,10 @@ b-card.dogCard(img-top :img-src='dog.image')
     :ok-disabled="modalSubmitting"
     :cancel-disabled="modalSubmitting"
     @hidden="resetForm"
+    ok-variant='accent'
+    cancel-variant='light'
+    ok-title='送出'
+    cancel-title='取消'
     )
     div.my-3
       img.mx-auto.img-fluid.d-block.mb-3(:src='dog.image' style='width: 230px')
@@ -127,6 +145,14 @@ export default {
       this.$bvModal.show('modal-apply' + this.dog._id)
       this.form.dog = this.dog._id
     },
+    // more (index) {
+    //   const thisId = this.dogs[index]._id
+    //   this.$bvModal.show('modal-more' + thisId)
+    // },
+    more () {
+      this.$bvModal.show('modal-more' + this.dog._id)
+      this.form.dog = this.dog._id
+    },
     resetForm (event) {
       if (this.modalSubmitting) {
         event.preventDefault()
@@ -157,16 +183,56 @@ export default {
     font-weight: 600;
     text-decoration: none;
   }
+  .card-body {
+    cursor: pointer;
+  }
   .card-img-top {
-    object-fit: contain;
+    object-fit: cover;
+    max-height: 390px;
   }
   .card-text {
     font-size: 17px;
     text-align: left;
+    color: $dark2;
+    line-height: 1.7rem;
+    // 多行文字省略號
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
   }
   .btn{
     color: $dark2;
     font-size: 17px;
   }
+  .card-footer {
+    background: none;
+    border: none;
+    cursor: default;
+  }
+}
+#dogscard .applyBtn {
+  background-color: $accent;
+  color: #fff;
+  border: $primary;
+  &:hover {
+    background-color: #e6a83e;
+    color: #fff;
+  }
+  &:focus {
+    background-color: $accent;
+    color: #fff;
+    border: $primary;
+  }
+}.btn-accent {
+  color: #fff;
+}
+.modal-header {
+  background-color: $primary;
+  text-align: center;
+  color: $accent;
+  }
+* {
+  transition: .5s;
 }
 </style>

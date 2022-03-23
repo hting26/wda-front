@@ -43,7 +43,9 @@ export default {
     text-align: left;
   }
   .btn {
-    color: $dark2;
+    border: $accent;
+    background: $accent;
+    color: #fff;
   }
 }
 </style>

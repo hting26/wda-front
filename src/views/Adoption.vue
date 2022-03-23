@@ -5,7 +5,7 @@ b-container#donate
   b-collapse#collapse-3(visible)
     .pageText 瑪莉愛狗協會是非營利的救援組織，已經救援了數千隻狗找到幸福的家!
   b-row.mt-5
-    b-col.my-3(cols='12' xl='6' v-for='dog in dogs' :key='dog._id')
+    b-col.my-3(cols='12' lg='6' v-for='dog in dogs' :key='dog._id')
       DogCard(:dog='dog')
 </template>
 
