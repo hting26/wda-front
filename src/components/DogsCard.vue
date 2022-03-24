@@ -6,7 +6,7 @@
       b-card-text(style='white-space: pre-line') {{ dog.description }}
     b-card-footer
       b-btn.mx-2(@click='more') 閱讀更多
-      b-btn.applyBtn.mx-2(@click='apply') 申請領養
+      b-btn.btn-accent.mx-2(@click='apply') 申請領養
   b-modal.modalMore(
     :id="'modal-more'+ dog._id"
     hide-footer
@@ -15,9 +15,9 @@
     text-center
     no-stacking
   )
-    img.moreImg(:src='dog.image' style='width: 100%;')
-    p(style="white-space: pre-line; margin:2rem 0;") {{ dog.description }}
-    b-btn.applyBtn(@click='apply'  style='') 申請領養
+    img(:src='dog.image' style='width: 100%;')
+    p.description {{ dog.description }}
+    b-btn.btn-accent.text-white.mx-auto.d-block(@click='apply') 申請領養
   b-modal(
     title="申請領養"
     @ok="submitApply"
@@ -145,10 +145,6 @@ export default {
       this.$bvModal.show('modal-apply' + this.dog._id)
       this.form.dog = this.dog._id
     },
-    // more (index) {
-    //   const thisId = this.dogs[index]._id
-    //   this.$bvModal.show('modal-more' + thisId)
-    // },
     more () {
       this.$bvModal.show('modal-more' + this.dog._id)
       this.form.dog = this.dog._id
@@ -203,7 +199,6 @@ export default {
   }
   .btn{
     color: $dark2;
-    font-size: 17px;
   }
   .card-footer {
     background: none;
@@ -211,21 +206,22 @@ export default {
     cursor: default;
   }
 }
-#dogscard .applyBtn {
-  background-color: $accent;
+#dogscard {
+  .btn-accent {
   color: #fff;
-  border: $primary;
   &:hover {
     background-color: #e6a83e;
+  }
+  .btn-ok {
     color: #fff;
   }
-  &:focus {
-    background-color: $accent;
-    color: #fff;
-    border: $primary;
-  }
-}.btn-accent {
-  color: #fff;
+}
+}
+.description {
+  color: $dark2;
+  white-space: pre-line;
+  margin:2rem 0;
+  line-height: 1.7rem;
 }
 .modal-header {
   background-color: $primary;
@@ -234,5 +230,12 @@ export default {
   }
 * {
   transition: .5s;
+}
+.modalMore #modal-footer {
+  display: flex;
+  justify-content: center;
+}
+.btn-accent {
+  color: #fff;
 }
 </style>

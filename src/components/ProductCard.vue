@@ -27,7 +27,6 @@ export default {
 <style lang="scss">
 .card-product {
   border: none;
-  // width: 190px;
   .card-title {
     color: $dark2;
     font-size: 18px;
