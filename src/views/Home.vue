@@ -40,6 +40,11 @@
         .iconbox
           b-icon.icon.mr-2(icon='pencil-square')
           |領養
+    b-carousel#carousel-fade(fade controls :interval="5000")
+      b-carousel-slide(img-src='../assets/carousel1.jpg' style="width: 1024; height: 480; object-fit: cover;" )
+      b-carousel-slide(img-src='../assets/carousel2.jpg' style="width: 1024; height: 480; object-fit: cover;")
+      b-carousel-slide(img-src='../assets/carousel3.jpg' style="object-fit: cover;")
+      b-carousel-slide(img-src='../assets/carousel4.jpg')
 </template>
 
 <style lang="scss">
@@ -66,12 +71,13 @@
   .helpus {
     display: flex;
     justify-content: center;
+    margin-bottom: 7rem;
   }
   .iconbox {
-    font-size: 2rem;
+    font-size: 1.2rem;
     color: $dark2;
     background-color: $secondary;
-    padding: 15px;
+    padding: 1.5rem 2rem;
     margin: 1rem 2rem;
     border-radius: 10px;
     transition: .3s;
@@ -96,7 +102,7 @@
   position: relative;
   line-height: 5rem;
   user-select: none;
-  margin: 3.5rem 0;
+  margin: 5rem 0;
 }
 .subtitle{
   font-size: 3.5rem;
